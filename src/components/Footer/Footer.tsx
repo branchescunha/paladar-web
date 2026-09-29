@@ -1,14 +1,6 @@
 import Link from "next/link";
+import { navigationItems, siteContent, siteRoutes } from "@/data/site";
 import styles from "./Footer.module.css";
-
-const navigationItems = [
-  { label: "Início", href: "/" },
-  { label: "Cardápio", href: "/cardapio" },
-  { label: "Marmitas", href: "/marmitas" },
-  { label: "Sobre", href: "/sobre" },
-  { label: "Buffet", href: "/buffet" },
-  { label: "Contato", href: "/contato" },
-] as const;
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -17,17 +9,18 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <section className={styles.brand} aria-label="Paladar">
+          <section
+            className={styles.brand}
+            aria-label={siteContent.brand.primaryName}
+          >
             <Link
               className={styles.wordmark}
-              href="/"
-              aria-label="Paladar — página inicial"
+              href={siteRoutes.home}
+              aria-label={`${siteContent.brand.primaryName} — página inicial`}
             >
-              Paladar
+              {siteContent.brand.primaryName}
             </Link>
-            <p className={styles.tagline}>
-              Comida feita com cuidado para reunir pessoas à mesa.
-            </p>
+            <p className={styles.tagline}>{siteContent.tagline}</p>
           </section>
 
           <nav aria-labelledby="footer-navigation-title">
@@ -50,17 +43,21 @@ export function Footer() {
               Onde estamos
             </h2>
             <address className={styles.address}>
-              QNO 11 Conjunto O Casa 16
+              {siteContent.address.line1}
               <br />
-              Avenida Oeste, Setor O, Ceilândia - DF
+              {siteContent.address.line2}
             </address>
 
             <div className={styles.schedule}>
               <h3 className={styles.detailTitle}>Funcionamento</h3>
-              <p>Todos os dias</p>
+              <p>{siteContent.restaurantHours.days}</p>
               <p>
-                <time dateTime="11:30">11h30</time> às{" "}
-                <time dateTime="15:00">15h</time>
+                <time dateTime={siteContent.restaurantHours.opensAt}>
+                  {siteContent.restaurantHours.opensAtLabel}
+                </time> às{" "}
+                <time dateTime={siteContent.restaurantHours.closesAt}>
+                  {siteContent.restaurantHours.closesAtLabel}
+                </time>
               </p>
             </div>
           </section>
@@ -74,11 +71,11 @@ export function Footer() {
                 <span className={styles.contactLabel}>WhatsApp geral</span>
                 <a
                   className={styles.contactLink}
-                  href="https://wa.me/5561984163455"
+                  href={siteContent.contacts.generalWhatsApp.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  (61) 98416-3455
+                  {siteContent.contacts.generalWhatsApp.display}
                   <span className={styles.visuallyHidden}>
                     {" "}
                     (abre em nova aba)
@@ -91,11 +88,11 @@ export function Footer() {
                 </span>
                 <a
                   className={styles.contactLink}
-                  href="https://wa.me/5561984901611"
+                  href={siteContent.contacts.lunchboxWhatsApp.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  (61) 98490-1611
+                  {siteContent.contacts.lunchboxWhatsApp.display}
                   <span className={styles.visuallyHidden}>
                     {" "}
                     (abre em nova aba)
@@ -106,11 +103,11 @@ export function Footer() {
                 <span className={styles.contactLabel}>Instagram</span>
                 <a
                   className={styles.contactLink}
-                  href="https://www.instagram.com/paladarprimerestaurante/"
+                  href={siteContent.contacts.instagram.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  @paladarprimerestaurante
+                  {siteContent.contacts.instagram.handle}
                   <span className={styles.visuallyHidden}>
                     {" "}
                     (abre em nova aba)
@@ -121,20 +118,20 @@ export function Footer() {
                 <span className={styles.contactLabel}>E-mail</span>
                 <a
                   className={styles.contactLink}
-                  href="mailto:churrascaria.paladar.df@gmail.com"
+                  href={siteContent.contacts.email.href}
                 >
-                  churrascaria.paladar.df@gmail.com
+                  {siteContent.contacts.email.address}
                 </a>
               </li>
               <li className={styles.contactItem}>
                 <span className={styles.contactLabel}>Eventos</span>
                 <a
                   className={styles.contactLink}
-                  href="https://buffetpaladar.com.br/"
+                  href={siteContent.externalLinks.buffet.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Paladar Buffet
+                  {siteContent.externalLinks.buffet.label}
                   <span className={styles.visuallyHidden}>
                     {" "}
                     (abre em nova aba)
@@ -146,7 +143,10 @@ export function Footer() {
         </div>
 
         <div className={styles.copyright}>
-          <p>© {currentYear} Paladar. Todos os direitos reservados.</p>
+          <p>
+            © {currentYear} {siteContent.brand.primaryName}. Todos os direitos
+            reservados.
+          </p>
         </div>
       </div>
     </footer>

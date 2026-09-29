@@ -3,16 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import {
+  navigationItems,
+  siteContent,
+  siteRoutes,
+} from "@/data/site";
 import styles from "./Header.module.css";
-
-const navigationItems = [
-  { label: "Início", href: "/" },
-  { label: "Cardápio", href: "/cardapio" },
-  { label: "Marmitas", href: "/marmitas" },
-  { label: "Sobre", href: "/sobre" },
-  { label: "Buffet", href: "/buffet" },
-  { label: "Contato", href: "/contato" },
-] as const;
 
 function isActiveRoute(pathname: string, href: string) {
   if (href === "/") {
@@ -53,11 +49,11 @@ export function Header() {
       <div className={styles.inner}>
         <Link
           className={styles.wordmark}
-          href="/"
-          aria-label="Paladar — página inicial"
+          href={siteRoutes.home}
+          aria-label={`${siteContent.brand.primaryName} — página inicial`}
           onClick={closeMenu}
         >
-          Paladar
+          {siteContent.brand.primaryName}
         </Link>
 
         <button
@@ -103,7 +99,11 @@ export function Header() {
             })}
           </ul>
 
-          <Link className={styles.cta} href="/marmitas" onClick={closeMenu}>
+          <Link
+            className={styles.cta}
+            href={siteRoutes.lunchboxes}
+            onClick={closeMenu}
+          >
             Pedir marmita
           </Link>
         </nav>
