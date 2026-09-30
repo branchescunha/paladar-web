@@ -1,0 +1,318 @@
+.main {
+  display: block;
+  min-height: 100vh;
+  padding: 0;
+  overflow-x: clip;
+  text-align: left;
+}
+
+.container {
+  width: min(100%, var(--container-lg));
+  margin-inline: auto;
+  padding-inline: var(--container-gutter);
+}
+
+.intro {
+  padding-block: clamp(3.5rem, 9vw, 7rem);
+  background: var(--color-background);
+}
+
+.intro .container {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.eyebrow {
+  color: var(--color-brand);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.14em;
+  line-height: var(--line-height-snug);
+  text-transform: uppercase;
+}
+
+.eyebrowDark {
+  color: var(--color-brand-on-light);
+}
+
+.title {
+  max-width: 10ch;
+  font-size: clamp(3.5rem, 15vw, 7.5rem);
+  letter-spacing: -0.055em;
+}
+
+.lead {
+  max-width: 40rem;
+  color: var(--color-text-muted);
+  font-size: clamp(var(--font-size-lg), 1rem + 0.6vw, var(--font-size-2xl));
+  line-height: var(--line-height-snug);
+}
+
+.availabilityNotice {
+  max-width: 42rem;
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.categoryNavigation {
+  border-block: 1px solid var(--color-border);
+  background: var(--color-charcoal-900);
+}
+
+.categoryNavigation ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  padding-block: var(--space-xs);
+  list-style: none;
+}
+
+.categoryNavigation a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding-inline: var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+}
+
+.categoryNavigation a:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+}
+
+.section {
+  padding-block: var(--space-3xl);
+  scroll-margin-top: 6rem;
+}
+
+.beveragesSection {
+  color: var(--color-text-dark);
+  background: var(--color-surface-light);
+}
+
+.sectionIntroduction {
+  display: grid;
+  gap: var(--space-sm);
+  max-width: 43rem;
+}
+
+.sectionIntroduction h2 {
+  font-size: clamp(2.75rem, 9vw, 5rem);
+  letter-spacing: -0.045em;
+}
+
+.sectionIntroduction > p:not(.eyebrow) {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+}
+
+.beveragesSection .sectionIntroduction > p:not(.eyebrow) {
+  color: var(--color-charcoal-700);
+}
+
+.categories {
+  display: grid;
+  gap: var(--space-2xl);
+  margin-top: var(--space-2xl);
+}
+
+.category {
+  display: grid;
+  gap: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 0.25rem solid var(--color-brand-on-light);
+  scroll-margin-top: 6rem;
+}
+
+.categoryHeading {
+  display: grid;
+  gap: var(--space-2xs);
+  align-content: start;
+}
+
+.categoryHeading h3 {
+  font-size: clamp(1.75rem, 7vw, 2.75rem);
+}
+
+.categoryHeading p {
+  max-width: 28rem;
+  color: var(--color-charcoal-700);
+}
+
+.itemList,
+.dessertList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.itemList {
+  border-top: 1px solid var(--color-border-light);
+}
+
+.menuItem {
+  display: grid;
+  gap: var(--space-xs);
+  padding-block: var(--space-sm);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.menuItem h4 {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  text-wrap: pretty;
+}
+
+.optionList {
+  display: grid;
+  gap: var(--space-2xs);
+  margin: 0;
+}
+
+.optionList > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-sm);
+  align-items: baseline;
+}
+
+.optionList dt {
+  color: var(--color-charcoal-700);
+  font-size: var(--font-size-sm);
+}
+
+.optionList dd {
+  margin: 0;
+  color: var(--color-brand-on-light);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  white-space: nowrap;
+}
+
+.dessertsSection {
+  border-top: 1px solid var(--color-border);
+  background: var(--color-charcoal-900);
+}
+
+.dessertList {
+  display: grid;
+  margin-top: var(--space-2xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.dessertList li {
+  display: grid;
+  gap: var(--space-xs);
+  padding-block: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dessertList h3 {
+  color: var(--color-text);
+}
+
+.dessertList p {
+  max-width: 35rem;
+  color: var(--color-text-muted);
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 48rem) {
+  .title {
+    font-size: clamp(4rem, 10vw, 7.5rem);
+  }
+
+  .intro .container {
+    grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+    column-gap: var(--space-2xl);
+  }
+
+  .intro .eyebrow,
+  .intro .title {
+    grid-column: 1;
+  }
+
+  .lead,
+  .availabilityNotice {
+    grid-column: 2;
+  }
+
+  .lead {
+    grid-row: 2;
+  }
+
+  .availabilityNotice {
+    grid-row: 3;
+  }
+
+  .category {
+    grid-template-columns: minmax(12rem, 0.65fr) minmax(0, 1.35fr);
+    gap: var(--space-2xl);
+  }
+
+  .menuItem {
+    grid-template-columns: minmax(0, 1fr) minmax(13rem, 0.8fr);
+    gap: var(--space-lg);
+  }
+
+  .dessertList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .dessertList li {
+    padding-inline: var(--space-md);
+    border-right: 1px solid var(--color-border);
+  }
+
+  .dessertList li:first-child {
+    padding-left: 0;
+  }
+
+  .dessertList li:last-child {
+    padding-right: 0;
+    border-right: 0;
+  }
+}
+
+@media (min-width: 64rem) {
+  .categoryNavigation ul {
+    gap: var(--space-xs);
+  }
+
+  .categoryNavigation a {
+    min-height: 3rem;
+  }
+
+  .category {
+    grid-template-columns: minmax(16rem, 0.75fr) minmax(0, 1.25fr);
+    gap: clamp(var(--space-2xl), 8vw, 7rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .categoryNavigation a {
+    transition: none;
+  }
+}
