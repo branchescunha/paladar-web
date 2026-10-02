@@ -12,6 +12,13 @@ type DeliveryArea = {
   fee: Money;
 };
 
+type LunchboxOption = {
+  id: string;
+  name: string;
+  composition: readonly string[];
+  price: Money;
+};
+
 export const restaurantContent = {
   service: {
     mealService: "apenas almoço",
@@ -76,10 +83,76 @@ export const restaurantContent = {
     },
   },
   lunchboxes: {
-    contentStatus: "provisional",
-    compositionStatus: "pending-confirmation",
-    priceStatus: "pending-confirmation",
-    names: ["Light", "Tradicional", "Picanha / Carnes Nobres", "Vegana"],
+    status: {
+      names: "provisional",
+      compositions: "provisional",
+      prices: "provisional",
+    },
+    options: [
+      {
+        id: "light",
+        name: "Light",
+        composition: [
+          "arroz",
+          "feijão",
+          "frango grelhado",
+          "legumes",
+          "salada",
+        ],
+        price: {
+          amountInCents: 3000,
+          currency: "BRL",
+          status: "provisional",
+        },
+      },
+      {
+        id: "tradicional",
+        name: "Tradicional",
+        composition: [
+          "arroz",
+          "feijão",
+          "farofa",
+          "acompanhamento",
+          "uma proteína selecionada",
+        ],
+        price: {
+          amountInCents: 3500,
+          currency: "BRL",
+          status: "provisional",
+        },
+      },
+      {
+        id: "carnes-nobres",
+        name: "Carnes Nobres",
+        composition: [
+          "arroz",
+          "feijão",
+          "acompanhamento",
+          "uma opção de carne nobre",
+        ],
+        price: {
+          amountInCents: 4500,
+          currency: "BRL",
+          status: "provisional",
+        },
+      },
+      {
+        id: "vegana",
+        name: "Vegana",
+        composition: [
+          "arroz",
+          "feijão",
+          "legumes",
+          "salada",
+          "sem ingredientes de origem animal",
+        ],
+        price: {
+          amountInCents: 3000,
+          currency: "BRL",
+          status: "provisional",
+        },
+      },
+    ] satisfies readonly LunchboxOption[],
   },
   history: {
     foundation: {
