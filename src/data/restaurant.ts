@@ -166,12 +166,36 @@ export const restaurantContent = {
       "Marcilon Silva Cunha",
       "Mauri Anderson Silva Cunha",
     ],
-    laterLeadership: ["Mauri Anderson Silva Cunha", "Alane"],
+    leadershipTransition: {
+      period: "2001/2002",
+      leaders: ["Mauri Anderson Silva Cunha", "Alane"],
+      relationship: "casal",
+      developments: [
+        "novos investimentos",
+        "melhorias",
+        "crescimento da estrutura",
+      ],
+    },
+    evolution: {
+      developments: [
+        "ampliação do espaço",
+        "mais variedade",
+        "melhorias na experiência",
+      ],
+      preservedValue: "essência familiar",
+    },
     renovation: {
       year: 2022,
       developments: [
+        "uma grande reforma",
+        "fortalecimento do churrasco selecionado",
         "introdução e fortalecimento de carnes nobres e cortes Angus",
       ],
+    },
+    present: {
+      locationRole: "parte da rotina de Ceilândia",
+      service: "almoço todos os dias",
+      continuity: "tradição familiar desde 1998",
     },
     legacy: "tradição familiar e presença em Ceilândia desde 1998",
   },
