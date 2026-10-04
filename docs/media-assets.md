@@ -1,8 +1,10 @@
 # Biblioteca de marca e mídia
 
-Esta biblioteca reúne referências selecionadas para tratamento posterior. Os arquivos ainda não são, necessariamente, assets finais de produção. Na seleção original, as cópias preservaram os bytes das fontes externas sem recorte, recompressão, retoque ou geração de conteúdo.
+Esta biblioteca reúne fontes preservadas, derivados técnicos e referências preparadas para o site e para uma futura Hero cinematográfica. Na seleção original, as cópias mantiveram os bytes das fontes externas sem recorte, recompressão, retoque ou geração de conteúdo.
 
-Os JPGs selecionados permanecem como fontes preservadas. Os derivados técnicos identificados neste documento não substituem esses arquivos e não receberam filtros, retoques ou alterações generativas.
+Os JPGs selecionados continuam intactos como fontes de maior qualidade. Os derivados WebP são arquivos novos e não os substituem. As correções determinísticas ficaram restritas a orientação, enquadramento, exposição, balanço visual, saturação moderada e otimização para web.
+
+A única edição generativa aceita nesta etapa foi a inserção moderada de clientes no salão. Tentativas de remoção no buffet e na churrasqueira foram descartadas por modificarem alimentos, rótulos ou equipamentos. Nenhuma dessas tentativas rejeitadas foi copiada para o projeto.
 
 ## Inventário das fontes
 
@@ -43,56 +45,87 @@ Cenas mistas foram atribuídas à categoria dominante. No material fornecido pel
 
 ## Classificação e destino
 
-| Asset fonte | Classificação | Destino previsto | Tratamento antes do uso |
+| Asset fonte | Classificação | Derivados e destino | Estado atual |
 | --- | --- | --- | --- |
-| `paladar-logo-light.jpg` | `both` | Fundo claro e fonte para versão transparente | Obter mestre vetorial ou realizar recorte manual profissional; não remover o fundo automaticamente. |
-| `paladar-logo-dark.jpg` | `both` | Fundo escuro, social preview e fonte para versão transparente | O social preview está pronto; Header e demais aplicações ainda exigem transparência real. |
-| `hero-reference-desktop-01.jpg` | `Hero reference` | Hero desktop da Home | Edição generativa para remover veículos, placas e interferências externas; definir o crop somente com o layout final. |
-| `hero-reference-mobile-01.jpg` | `Hero reference` | Hero mobile da Home | Edição generativa para limpar o fundo e marcas visuais do buffet; definir o crop somente com o layout final. |
-| `restaurant-facade-01.jpg` | `both` | Contato, localização, Home e referência audiovisual | Perspectiva e luz; remoção generativa de fiação, telefone vizinho, resíduos e áreas afetadas. |
-| `restaurant-interior-01.jpg` | `both` | Sobre, Nosso Espaço, Home e referência audiovisual | Perspectiva e luz; remoção generativa do conteúdo da TV e possível inserção de clientes. |
-| `paladar-buffet-event-01.jpg` | `final website image` | Bloco de mídia da página Buffet | Derivado WebP pronto; não exige edição generativa obrigatória. |
-| `restaurant-grill-01.jpg` | `both` | Seção de churrasco e referência audiovisual | Luz e cor; remover o funcionário se não houver autorização e limpar ou reconstruir elementos operacionais. |
-| `restaurant-entrance-01.jpg` | `final website image` | Contato, localização e Nosso Espaço | Recuperar sombras e perspectiva; limpar piso e cobertura e remover pessoas distantes se necessário. |
+| `paladar-logo-light.jpg` | `both` | Fundo claro e futura versão transparente | Fonte preservada; transparência depende de mestre vetorial ou recorte manual profissional. |
+| `paladar-logo-dark.jpg` | `both` | Fundo escuro e social preview | Social preview pronto; transparência ainda pendente. |
+| `hero-reference-desktop-01.jpg` | `Hero reference` | `hero-buffet-reference-desktop.webp` | Luz e cor equilibradas; veículos e placas externos ainda exigem edição localizada externa. |
+| `hero-reference-mobile-01.jpg` | `Hero reference` | `hero-buffet-reference-mobile.webp` | Luz e cor equilibradas; limpeza localizada do fundo ainda pendente. |
+| `restaurant-facade-01.jpg` | `both` | Versão balanceada e referências Hero desktop/mobile | Enquadramentos prontos; fiação, telefone vizinho e resíduos ainda exigem edição localizada externa. |
+| `restaurant-interior-01.jpg` | `both` | Versão limpa, versão com clientes e referências Hero desktop/mobile/mesa | Derivados aprovados. A versão vazia foi mantida separadamente. |
+| `paladar-buffet-event-01.jpg` | `final website image` | `paladar-buffet-event-01.webp` | Pronto para uso web; nenhuma nova alteração trouxe ganho suficiente. |
+| `restaurant-grill-01.jpg` | `Hero reference` | `restaurant-grill-balanced.webp` | Luz e cor equilibradas; remoção fiel do funcionário e objetos permanece pendente. |
+| `restaurant-entrance-01.jpg` | `both` | Versão balanceada e referências Hero desktop/mobile | Enquadramentos prontos; recuperação seletiva de sombras e limpeza localizada ainda são desejáveis. |
 
-Nenhum asset selecionado foi classificado como `discard after review`. Os arquivos que ainda dependem de retoque permanecem como bases de maior qualidade e não receberam derivados web antecipados, evitando recompressão dupla.
+Nenhum asset fonte foi classificado como `discard`. A tentativa generativa do buffet e a tentativa de remoção na churrasqueira foram descartadas por não preservarem fielmente alimentos, rótulos, equipamentos ou geometria. A versão generativa do salão com clientes foi aceita após comparação visual com a fonte.
 
-## Candidatos definitivos para Hero
+## Derivados de produção
 
-- Desktop: `hero-reference-desktop-01.jpg`, pela leitura ampla do buffet, profundidade e espaço lateral para composição editorial.
-- Mobile: `hero-reference-mobile-01.jpg`, pelo enquadramento vertical e proximidade dos alimentos.
-- Alternativas para narrativa ou vídeo: `restaurant-grill-01.jpg`, `restaurant-facade-01.jpg` e `restaurant-interior-01.jpg`.
+Todos os WebPs desta etapa usam qualidade 88, preservam a resolução útil disponível e removem metadados. Não houve upscale.
 
-Os dois candidatos principais são definitivos como fontes de trabalho, mas não estão prontos para publicação antes das edições generativas registradas acima.
+| Derivado | Fonte | Dimensões | Tamanho | Finalidade e tratamento |
+| --- | --- | ---: | ---: | --- |
+| `public/images/hero/hero-buffet-reference-desktop.webp` | `hero-reference-desktop-01.jpg` | 1280 × 960 | 183698 bytes | Hero desktop; exposição e saturação moderadas, enquadramento integral. |
+| `public/images/hero/hero-buffet-reference-mobile.webp` | `hero-reference-mobile-01.jpg` | 960 × 1280 | 198310 bytes | Hero mobile; exposição e saturação moderadas, enquadramento integral. |
+| `public/images/restaurant/facade/restaurant-facade-balanced.webp` | `restaurant-facade-01.jpg` | 960 × 1280 | 150730 bytes | Referência limpa de cor, sem reconstrução generativa. |
+| `public/images/hero/hero-facade-reference-desktop.webp` | `restaurant-facade-01.jpg` | 960 × 540 | 83642 bytes | Recorte horizontal para abertura da sequência. |
+| `public/images/hero/hero-facade-reference-mobile.webp` | `restaurant-facade-01.jpg` | 720 × 1280 | 106430 bytes | Recorte vertical central para abertura da sequência. |
+| `public/images/restaurant/space/restaurant-entrance-balanced.webp` | `restaurant-entrance-01.jpg` | 960 × 1280 | 145636 bytes | Versão integral com ajuste leve de exposição. |
+| `public/images/hero/hero-entrance-reference-desktop.webp` | `restaurant-entrance-01.jpg` | 960 × 540 | 59894 bytes | Recorte horizontal da transição exterior/interior. |
+| `public/images/hero/hero-entrance-reference-mobile.webp` | `restaurant-entrance-01.jpg` | 720 × 1280 | 86934 bytes | Recorte vertical da transição exterior/interior. |
+| `public/images/restaurant/interior/restaurant-interior-clean.webp` | `restaurant-interior-01.jpg` | 1280 × 960 | 109370 bytes | Salão vazio preservado, com ajuste leve de exposição e cor. |
+| `public/images/restaurant/interior/restaurant-interior-guests.webp` | `restaurant-interior-01.jpg` | 1448 × 1086 | 147882 bytes | Site; inserção generativa aceita de clientes adultos em ocupação moderada. |
+| `public/images/hero/hero-interior-reference-desktop.webp` | `restaurant-interior-01.jpg` | 1280 × 720 | 89682 bytes | Recorte horizontal do salão vazio. |
+| `public/images/hero/hero-interior-reference-mobile.webp` | `restaurant-interior-01.jpg` | 540 × 960 | 69910 bytes | Recorte vertical do salão vazio. |
+| `public/images/hero/hero-table-reference-desktop.webp` | `restaurant-interior-01.jpg` | 1000 × 562 | 65242 bytes | Etapa de mesa da sequência desktop, derivada do salão real. |
+| `public/images/hero/hero-table-reference-mobile.webp` | `restaurant-interior-01.jpg` | 540 × 960 | 46546 bytes | Etapa de mesa da sequência mobile, derivada do salão real. |
+| `public/images/restaurant/grill/restaurant-grill-balanced.webp` | `restaurant-grill-01.jpg` | 1280 × 960 | 210308 bytes | Referência de churrasqueira com ajuste leve de exposição e cor; não é asset final enquanto houver pendência de direito de imagem. |
 
-Os arquivos `churrasco.mp4` e `acompanhamento churrasco.mp4`, encontrados no material do cliente, foram catalogados como possíveis referências de movimento. Não foram copiados por somarem aproximadamente 22,4 MiB e exigirem avaliação de frames antes de qualquer uso.
-
-## Tratamentos futuros
-
-| Asset | Necessidades identificadas |
-| --- | --- |
-| `hero-reference-desktop-01.jpg` | Correção de luz, balanço de branco e enquadramento; remoção dos veículos e placas visíveis através da fachada. |
-| `hero-reference-mobile-01.jpg` | Correção de luz, contraste, enquadramento e limpeza visual do fundo. |
-| `restaurant-facade-01.jpg` | Correção de perspectiva e luz; limpeza de resíduos, fiação e interferências laterais, incluindo o telefone parcial do estabelecimento vizinho. |
-| `restaurant-interior-01.jpg` | Correção de luz e perspectiva; remoção ou substituição do conteúdo da TV; possível preenchimento moderado com clientes. |
-| `paladar-buffet-event-01.jpg` | Ajustes opcionais de luz, cor e perspectiva e limpeza visual do fundo; não bloqueiam o uso do derivado WebP. |
-| `restaurant-grill-01.jpg` | Correção de luz e cor; limpeza da bancada, recipientes e objetos de operação; avaliar autorização de imagem do funcionário. |
-| `restaurant-entrance-01.jpg` | Recuperação de sombras, correção vertical e limpeza de marcas da cobertura e do piso. |
-
-`restaurant-interior-01.jpg` é a melhor base para receber clientes por IA, pois apresenta mesas vazias, circulação clara e perspectiva coerente. `hero-reference-desktop-01.jpg` também admite presença humana discreta ao fundo. Qualquer inclusão deverá manter escala, iluminação e circulação naturais.
-
-Com exceção dos dois derivados técnicos marcados como prontos, as imagens permanecem como bases de trabalho. Elas não devem ser referenciadas em páginas nem seguir para uma entrega de produção antes da revisão de privacidade, direitos de imagem e tratamentos indicados. Isso se aplica especialmente a `restaurant-grill-01.jpg`, que registra um funcionário de costas.
-
-Para uma futura geração de vídeo cinematográfico, as melhores bases estáticas são a fachada, o buffet horizontal, o salão e a churrasqueira. Elas permitem estabelecer exterior, ambiente, serviço e gastronomia sem depender de material artificial nesta etapa.
-
-## Derivados técnicos criados
+Os derivados técnicos anteriores continuam válidos:
 
 | Derivado | Fonte | Especificação | Tamanho | Estado |
 | --- | --- | --- | ---: | --- |
-| `public/images/brand/paladar-social-preview.jpg` | `paladar-logo-dark.jpg` | JPEG 1200 × 630 px, qualidade 88, sRGB e metadados removidos | 34,6 KiB | Pronto para social preview. A marca foi encaixada integralmente em uma área de 1013 × 570 px, com margem preta adicional em todos os lados. |
-| `public/images/restaurant/buffet/paladar-buffet-event-01.webp` | `paladar-buffet-event-01.jpg` | WebP 1200 × 554 px, qualidade 82, proporção preservada e metadados removidos | 60,9 KiB | Pronto para uso web. A comparação visual com o JPG não revelou artefatos perceptíveis. |
+| `public/images/brand/paladar-social-preview.jpg` | `paladar-logo-dark.jpg` | JPEG 1200 × 630 px, qualidade 88, sRGB e metadados removidos | 35408 bytes | Pronto para social preview; símbolo e lettering integrais. |
+| `public/images/restaurant/buffet/paladar-buffet-event-01.webp` | `paladar-buffet-event-01.jpg` | WebP 1200 × 554 px, qualidade 82, proporção preservada e metadados removidos | 62390 bytes | Pronto para uso web, sem artefatos perceptíveis. |
 
-Não foi criado um derivado de alta qualidade separado: os JPGs originais já cumprem essa função e foram preservados sem alterações. Também não houve upscale.
+## Candidatos da futura Hero
+
+Sequência desktop preparada:
+
+1. `hero-facade-reference-desktop.webp`
+2. `hero-entrance-reference-desktop.webp`
+3. `hero-interior-reference-desktop.webp`
+4. `hero-buffet-reference-desktop.webp`
+5. `restaurant-grill-balanced.webp`, apenas como referência interna enquanto a remoção fiel estiver pendente
+6. `hero-table-reference-desktop.webp`
+
+Sequência mobile preparada:
+
+1. `hero-facade-reference-mobile.webp`
+2. `hero-entrance-reference-mobile.webp`
+3. `hero-interior-reference-mobile.webp`
+4. `hero-buffet-reference-mobile.webp`
+5. `restaurant-grill-01.jpg`, apenas como fonte interna enquanto não houver derivado vertical fiel
+6. `hero-table-reference-mobile.webp`
+
+Os candidatos principais do buffet continuam sendo as melhores bases gastronômicas. Os arquivos `churrasco.mp4` e `acompanhamento churrasco.mp4` seguem apenas catalogados fora do repositório; não foram copiados porque somam aproximadamente 22,4 MiB e exigem avaliação de frames.
+
+## Edições generativas e pendências
+
+| Asset | Resultado nesta etapa | Pendência |
+| --- | --- | --- |
+| Buffet desktop | Tentativa rejeitada: alterou alimentos, rótulos e equipamentos. | Remover veículos e placas com máscara localizada ou edição manual de alta fidelidade. |
+| Buffet mobile | Não recebeu reconstrução generativa. | Limpar apenas interferências do fundo sem alterar alimentos, etiquetas ou churrasqueira. |
+| Fachada | Não recebeu reconstrução generativa para proteger placa e arquitetura. | Remover fiação, telefone parcial do vizinho e resíduos; corrigir perspectiva de forma localizada. |
+| Entrada | Não recebeu reconstrução generativa. | Recuperar sombras seletivamente e limpar marcas da cobertura/piso sem alterar o caminho real. |
+| Salão limpo | Correções determinísticas aprovadas; a TV permaneceu intacta. | Substituir ou neutralizar o conteúdo da TV apenas se houver edição localizada segura. |
+| Salão com clientes | Edição generativa aceita; clientes em escala e luz coerentes, sem poses dirigidas à câmera. | Revisar novamente junto ao layout final antes da publicação. |
+| Churrasqueira | Tentativa rejeitada: alterou carnes e geometria do equipamento. | Remover funcionário, caixas e pano com máscara localizada; preservar integralmente carnes, churrasqueira, bancada e mármore. |
+| Buffet de eventos | Derivado existente mantido. | Nenhuma edição obrigatória. |
+
+As remoções rejeitadas exigem ferramenta externa com máscara explícita ou retoque manual. Não devem ser aproximadas por blur, clone grosseiro ou regeneração integral da cena.
+
+Não foi criada uma versão do buffet com clientes. A tentativa mais simples de limpeza já modificou alimentos e equipamentos; adicionar pessoas aumentaria o risco de descaracterização e ficou registrado como pendência externa.
 
 ## Estado da logo
 
@@ -116,7 +149,7 @@ Situação por aplicação:
 - Social preview: derivado 1200 × 630 px criado a partir da versão escura, sem cortar símbolo ou lettering.
 - Versão transparente: não criada, pois a remoção automática do fundo degradaria o desenho rasterizado.
 
-Nenhuma das cinco pendências listadas acima foi concluída nesta Issue.
+Nenhuma tentativa generativa de transparência foi realizada. As cinco pendências listadas acima continuam abertas.
 
 ## Materiais não incluídos
 
