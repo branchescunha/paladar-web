@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Hero } from "@/components/Hero/Hero";
 import { restaurantContent } from "@/data/restaurant";
 import { siteContent, siteRoutes } from "@/data/site";
 import styles from "./page.module.css";
@@ -19,7 +20,7 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <section className={styles.hero} aria-labelledby="hero-title">
+      <Hero labelledBy="hero-title">
         <div className={`${styles.container} ${styles.heroGrid}`}>
           <div className={styles.heroContent}>
             <p className={styles.eyebrow}>
@@ -72,7 +73,7 @@ export default function Home() {
             </ul>
           </div>
         </div>
-      </section>
+      </Hero>
 
       <section
         className={`${styles.section} ${styles.lightSection}`}
