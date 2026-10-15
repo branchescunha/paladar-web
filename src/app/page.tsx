@@ -174,6 +174,7 @@ export default function Home() {
       <section
         className={`${styles.section} ${styles.locationSection}`}
         aria-labelledby="location-title"
+        data-surface="dark"
       >
         <div className={`${styles.container} ${styles.locationGrid}`}>
           <div className={styles.locationMedia}>
@@ -217,12 +218,15 @@ export default function Home() {
               </div>
             </div>
 
-            <Link
+            <a
               className={`${styles.button} ${styles.buttonPrimary}`}
-              href={siteRoutes.contact}
+              href={siteContent.externalLinks.googleMaps.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Ver localização no Google Maps (abre em nova aba)"
             >
               Ver localização
-            </Link>
+            </a>
           </div>
         </div>
       </section>

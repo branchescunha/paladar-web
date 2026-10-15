@@ -35,7 +35,7 @@
   display: grid;
   gap: var(--space-xl);
   align-items: end;
-  padding-block: clamp(4.5rem, 10vw, 8rem);
+  padding-block: var(--section-block-space);
 }
 
 .heroContent {
@@ -59,7 +59,7 @@
 
 .heroTitle {
   max-width: 10ch;
-  font-size: clamp(3.25rem, 13vw, 7.5rem);
+  font-size: var(--font-size-page-title);
   letter-spacing: -0.055em;
 }
 
@@ -119,12 +119,12 @@
 }
 
 .buttonDark {
-  color: var(--color-text);
+  color: var(--color-on-dark);
   background: var(--color-charcoal-950);
 }
 
 .buttonDark:hover {
-  color: var(--color-text);
+  color: var(--color-on-dark);
   background: var(--color-charcoal-800);
 }
 
@@ -164,7 +164,7 @@
 }
 
 .section {
-  padding-block: var(--space-3xl);
+  padding-block: var(--section-block-space);
 }
 
 .lightSection {
@@ -183,7 +183,7 @@
 .deliveryGrid h2,
 .finalCta h2 {
   max-width: 16ch;
-  font-size: clamp(2.25rem, 8vw, 4.75rem);
+  font-size: var(--font-size-section-title);
   letter-spacing: -0.045em;
 }
 
@@ -209,18 +209,17 @@
 }
 
 .formatList h3 {
-  font-size: clamp(1.75rem, 7vw, 3rem);
+  font-size: var(--font-size-feature-title);
 }
 
 .formatList article > p:last-child {
   max-width: 34rem;
-  color: var(--color-charcoal-700);
+  color: var(--color-text-muted);
   font-size: var(--font-size-lg);
 }
 
 .houseSection {
-  border-block: 1px solid var(--color-border);
-  background: var(--color-charcoal-900);
+  border-block: 1px solid var(--section-border);
 }
 
 .houseIntroduction {
@@ -231,13 +230,6 @@
 .houseIntroduction > div {
   display: grid;
   gap: var(--space-sm);
-}
-
-.provisionalNotice {
-  max-width: 34rem;
-  padding-left: var(--space-sm);
-  border-left: 0.25rem solid var(--color-accent);
-  color: var(--color-text-muted);
 }
 
 .lunchboxGrid {
@@ -258,8 +250,9 @@
   grid-template-rows: auto auto 1fr auto;
   gap: var(--space-md);
   padding: var(--space-lg);
-  border: 1px solid var(--color-border);
-  background: var(--color-background);
+  border: 1px solid var(--section-border);
+  color: var(--section-fg);
+  background: var(--section-surface);
 }
 
 .cardHeading {
@@ -270,7 +263,7 @@
 }
 
 .cardHeading > span {
-  color: var(--color-brand);
+  color: var(--section-accent);
   font-family: var(--font-family-heading);
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
@@ -287,12 +280,12 @@
 }
 
 .lunchboxCard h3 {
-  color: var(--color-text);
-  font-size: clamp(2rem, 8vw, 3.5rem);
+  color: var(--section-fg);
+  font-size: var(--font-size-feature-title);
 }
 
 .composition {
-  color: var(--color-text-muted);
+  color: var(--section-muted);
 }
 
 .composition::first-letter {
@@ -303,7 +296,7 @@
   display: grid;
   gap: var(--space-md);
   padding-top: var(--space-md);
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--section-border);
 }
 
 .cardFooter > p {
@@ -315,7 +308,7 @@
 }
 
 .cardFooter span {
-  color: var(--color-text-muted);
+  color: var(--section-muted);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.08em;
@@ -323,7 +316,7 @@
 }
 
 .cardFooter strong {
-  color: var(--color-brand);
+  color: var(--section-accent);
   font-family: var(--font-family-heading);
   font-size: var(--font-size-2xl);
 }
@@ -333,23 +326,30 @@
   width: fit-content;
   min-height: 2.75rem;
   align-items: center;
-  color: var(--color-text);
+  justify-content: center;
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid var(--section-accent);
+  border-radius: var(--radius-pill);
+  color: var(--color-charcoal-950);
+  background: var(--section-accent);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
-  text-decoration: underline;
+  line-height: var(--line-height-snug);
+  text-decoration: none;
 }
 
 .orderLink:hover {
-  color: var(--color-brand);
+  border-color: var(--color-brand-hover);
+  color: var(--color-charcoal-950);
+  background: var(--color-brand-hover);
 }
 
 .deliverySection {
-  color: var(--color-text-dark);
-  background: var(--color-orange-500);
+  color: var(--section-fg);
 }
 
 .deliverySection .eyebrowDark {
-  color: var(--color-charcoal-950);
+  color: var(--section-accent);
 }
 
 .deliveryGrid,
@@ -376,14 +376,14 @@
 .deliveryDetails dl {
   display: grid;
   margin: 0;
-  border-top: 1px solid rgb(23 18 16 / 35%);
+  border-top: 1px solid var(--section-border);
 }
 
 .deliveryDetails dl > div {
   display: grid;
   gap: var(--space-3xs);
   padding-block: var(--space-sm);
-  border-bottom: 1px solid rgb(23 18 16 / 35%);
+  border-bottom: 1px solid var(--section-border);
 }
 
 .deliveryDetails dt {
@@ -449,7 +449,7 @@
 .finalCta {
   padding-block: var(--space-2xl);
   color: var(--color-text-dark);
-  background: var(--color-cream-100);
+  background: var(--color-surface-muted);
 }
 
 .finalCtaInner {
@@ -464,7 +464,7 @@
 }
 
 .finalCta h2 {
-  font-size: clamp(2rem, 6vw, 3.75rem);
+  font-size: var(--font-size-section-title);
 }
 
 .visuallyHidden {
@@ -486,7 +486,6 @@
   }
 
   .formatList,
-  .houseIntroduction,
   .deliveryGrid,
   .finalCtaInner {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -508,11 +507,6 @@
   .formatList article:last-child {
     padding-right: 0;
     border-right: 0;
-  }
-
-  .houseIntroduction {
-    gap: var(--space-2xl);
-    align-items: end;
   }
 
   .lunchboxGrid {
@@ -551,7 +545,6 @@
 @media (min-width: 64rem) {
   .heroGrid {
     gap: clamp(var(--space-2xl), 8vw, 8rem);
-    min-height: calc(100svh - 5rem);
   }
 
   .lunchboxGrid {

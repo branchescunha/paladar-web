@@ -1,3 +1,5 @@
+import { siteLinks } from "@/data/site-links";
+
 export type HttpsUrl = `https://${string}`;
 export type MailtoUrl = `mailto:${string}`;
 
@@ -33,6 +35,9 @@ export const siteContent = {
     alternativeNames: ["Restaurante Paladar", "Paladar Prime Restaurante"],
   },
   tagline: "Comida feita com cuidado para reunir pessoas à mesa.",
+  legal: {
+    cnpj: "03.259.872/0001-67",
+  },
   address: {
     line1: "QNO 11 Conjunto O Casa 16",
     line2: "Avenida Oeste, Setor O, Ceilândia - DF",
@@ -47,11 +52,9 @@ export const siteContent = {
   contacts: {
     generalWhatsApp: {
       display: "(61) 98416-3455",
-      href: "https://wa.me/5561984163455" satisfies HttpsUrl,
     },
     lunchboxWhatsApp: {
       display: "(61) 98490-1611",
-      href: "https://wa.me/5561984901611" satisfies HttpsUrl,
     },
     instagram: {
       handle: "@paladarprimerestaurante",
@@ -63,6 +66,10 @@ export const siteContent = {
     },
   },
   externalLinks: {
+    googleMaps: {
+      label: "Paladar Prime Restaurante no Google Maps",
+      href: siteLinks.googleMaps,
+    },
     buffet: {
       label: "Paladar Buffet",
       href: "https://buffetpaladar.com.br/" satisfies HttpsUrl,

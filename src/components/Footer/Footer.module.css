@@ -1,7 +1,7 @@
 .footer {
   border-top: 1px solid var(--color-border);
   color: var(--color-text-muted);
-  background: var(--color-surface);
+  background: var(--color-footer-background);
 }
 
 .container {
@@ -131,6 +131,10 @@
 }
 
 .copyright {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3xs) var(--space-sm);
+  justify-content: space-between;
   grid-area: copyright;
   padding-top: var(--space-sm);
   border-top: 1px solid var(--color-border);
@@ -176,7 +180,15 @@
   }
 
   .navigationList {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .navigationList li + li {
+    margin-left: var(--space-xs);
+    padding-left: var(--space-xs);
+    border-left: 1px solid var(--color-border);
   }
 
   .details {
@@ -197,6 +209,7 @@
 
   .copyright {
     align-self: end;
+    justify-content: flex-end;
     text-align: right;
   }
 }

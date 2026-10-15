@@ -34,7 +34,7 @@
   display: grid;
   gap: var(--space-xl);
   align-items: center;
-  padding-block: clamp(4.5rem, 10vw, 8rem);
+  padding-block: var(--section-block-space);
 }
 
 .heroContent {
@@ -58,7 +58,7 @@
 
 .heroTitle {
   max-width: 12ch;
-  font-size: clamp(3.25rem, 11vw, 7rem);
+  font-size: var(--font-size-page-title);
   letter-spacing: -0.055em;
 }
 
@@ -111,23 +111,23 @@
 }
 
 .buttonDark {
-  color: var(--color-text);
+  color: var(--color-on-dark);
   background: var(--color-charcoal-950);
 }
 
 .buttonDark:hover {
-  color: var(--color-text);
+  color: var(--color-on-dark);
   background: var(--color-charcoal-800);
 }
 
 .buttonGhost {
-  border-color: var(--color-charcoal-700);
+  border-color: var(--color-border-dark);
   color: var(--color-text-dark);
   background: transparent;
 }
 
 .buttonGhost:hover {
-  border-color: var(--color-charcoal-950);
+  border-color: var(--color-text-dark);
   color: var(--color-text-dark);
   background: rgb(23 18 16 / 8%);
 }
@@ -189,7 +189,7 @@
   z-index: 1;
   color: var(--color-text);
   font-family: var(--font-family-heading);
-  font-size: clamp(4.75rem, 22vw, 9rem);
+  font-size: clamp(3.75rem, 16vw, 6.5rem);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.075em;
   line-height: 0.9;
@@ -201,7 +201,7 @@
 }
 
 .section {
-  padding-block: var(--space-3xl);
+  padding-block: var(--section-block-space);
 }
 
 .introductionSection {
@@ -219,7 +219,7 @@
 .sectionTitle {
   max-width: 16ch;
   margin-top: var(--space-sm);
-  font-size: clamp(2.25rem, 8vw, 4.75rem);
+  font-size: var(--font-size-section-title);
   letter-spacing: -0.045em;
 }
 
@@ -233,12 +233,11 @@
 }
 
 .sectionCopy p:last-child {
-  color: var(--color-charcoal-700);
+  color: var(--color-text-muted);
 }
 
 .connectionSection {
-  border-block: 1px solid var(--color-border);
-  background: var(--color-charcoal-900);
+  border-block: 1px solid var(--section-border);
 }
 
 .connectionIntroduction {
@@ -249,7 +248,7 @@
 
 .connectionIntroduction > p:last-child {
   max-width: 41rem;
-  color: var(--color-text-muted);
+  color: var(--section-muted);
   font-size: var(--font-size-lg);
 }
 
@@ -257,7 +256,7 @@
   display: grid;
   margin: var(--space-2xl) 0 0;
   padding: 0;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--section-border);
   list-style: none;
 }
 
@@ -265,11 +264,11 @@
   display: grid;
   gap: var(--space-xs);
   padding-block: var(--space-lg);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--section-border);
 }
 
 .valueList span {
-  color: var(--color-brand);
+  color: var(--section-accent);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.1em;
@@ -281,16 +280,15 @@
 
 .valueList p {
   max-width: 27rem;
-  color: var(--color-text-muted);
+  color: var(--section-muted);
 }
 
 .mediaSection {
-  color: var(--color-text-dark);
-  background: var(--color-red-500);
+  color: var(--section-fg);
 }
 
 .mediaSection .eyebrowDark {
-  color: var(--color-charcoal-950);
+  color: var(--section-accent);
 }
 
 .mediaGrid {
@@ -304,7 +302,7 @@
   align-content: center;
   padding: var(--space-lg);
   overflow: hidden;
-  color: var(--color-text);
+  color: var(--color-on-dark);
   background: var(--color-charcoal-950);
 }
 
@@ -321,7 +319,7 @@
 
 .mediaComposition p {
   font-family: var(--font-family-heading);
-  font-size: clamp(4.25rem, 20vw, 8.5rem);
+  font-size: clamp(3.75rem, 16vw, 6.5rem);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.075em;
   line-height: 0.75;
@@ -346,13 +344,13 @@
 }
 
 .mediaContent > p:last-child {
-  color: var(--color-charcoal-950);
+  color: var(--section-muted);
 }
 
 .finalCta {
   padding-block: var(--space-2xl);
   color: var(--color-text-dark);
-  background: var(--color-cream-100);
+  background: var(--color-surface-muted);
 }
 
 .finalCtaInner {
@@ -366,13 +364,13 @@
 
 .finalCta h2 {
   max-width: 17ch;
-  font-size: clamp(2rem, 6vw, 3.75rem);
+  font-size: var(--font-size-section-title);
   letter-spacing: -0.04em;
 }
 
 .finalCtaInner > div:first-child > p:last-child {
   max-width: 40rem;
-  color: var(--color-charcoal-700);
+  color: var(--color-text-muted);
 }
 
 .finalActions {
@@ -429,7 +427,7 @@
   }
 
   .mediaComposition p {
-    font-size: clamp(5.5rem, 13vw, 8.5rem);
+    font-size: clamp(4.5rem, 9vw, 6.5rem);
   }
 
   .finalActions {
@@ -441,7 +439,6 @@
   .heroGrid {
     grid-template-columns: minmax(0, 1.3fr) minmax(20rem, 0.7fr);
     gap: clamp(var(--space-2xl), 8vw, 8rem);
-    min-height: calc(100svh - 5rem);
   }
 
   .brandStage {
@@ -450,7 +447,7 @@
   }
 
   .stageService {
-    font-size: clamp(4.5rem, 7vw, 6rem);
+    font-size: clamp(3.75rem, 6vw, 5.5rem);
   }
 
   .editorialGrid,

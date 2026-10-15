@@ -24,6 +24,7 @@
   display: grid;
   gap: var(--space-sm);
   max-width: 42rem;
+  color: var(--color-on-dark);
   text-shadow: 0 0.125rem 1.25rem rgb(0 0 0 / 72%);
 }
 
@@ -145,7 +146,7 @@
 .detailLine {
   padding-top: var(--space-sm);
   border-top: 1px solid var(--color-border-light);
-  color: var(--color-charcoal-700);
+  color: var(--color-text-muted);
   font-weight: var(--font-weight-semibold);
 }
 
@@ -191,25 +192,26 @@
 
 .serviceItem > p {
   max-width: 31rem;
-  color: var(--color-charcoal-700);
+  color: var(--color-text-muted);
   font-size: clamp(var(--font-size-base), 0.96rem + 0.2vw, var(--font-size-lg));
   text-wrap: pretty;
 }
 
 .locationSection {
-  color: var(--color-text);
-  background: var(--color-charcoal-950);
+  --section-bg: var(--color-charcoal-950);
+  color: var(--section-fg);
+  background: var(--section-bg);
 }
 
 .locationMedia {
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--section-border);
 }
 
 .locationFacts {
   display: grid;
   gap: var(--space-md);
   padding-block: var(--space-sm);
-  border-block: 1px solid var(--color-border);
+  border-block: 1px solid var(--section-border);
 }
 
 .locationFacts > div {
@@ -218,7 +220,7 @@
 }
 
 .locationFacts h3 {
-  color: var(--color-brand);
+  color: var(--section-accent);
   font-family: var(--font-family-body);
   font-size: var(--font-size-xs);
   letter-spacing: 0.1em;
@@ -227,7 +229,7 @@
 
 .locationFacts address,
 .locationFacts p {
-  color: var(--color-text-muted);
+  color: var(--section-muted);
   font-size: var(--font-size-base);
   font-style: normal;
 }

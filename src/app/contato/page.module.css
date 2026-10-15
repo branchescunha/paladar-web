@@ -34,7 +34,7 @@
   display: grid;
   gap: var(--space-xl);
   align-items: center;
-  padding-block: clamp(4.5rem, 10vw, 8rem);
+  padding-block: var(--section-block-space);
 }
 
 .heroContent {
@@ -58,7 +58,7 @@
 
 .heroTitle {
   max-width: 12ch;
-  font-size: clamp(3.25rem, 11vw, 7rem);
+  font-size: var(--font-size-page-title);
   letter-spacing: -0.055em;
 }
 
@@ -107,14 +107,14 @@
 }
 
 .buttonOutline {
-  border-color: var(--color-charcoal-700);
+  border-color: var(--color-border-dark);
   color: var(--color-text);
   background: transparent;
 }
 
 .buttonOutline:hover {
   border-color: var(--color-text);
-  color: var(--color-text-dark);
+  color: var(--color-background);
   background: var(--color-text);
 }
 
@@ -123,7 +123,7 @@
   display: grid;
   gap: var(--space-xs);
   align-content: center;
-  min-height: 22rem;
+  min-height: 18rem;
   padding: var(--space-lg);
   overflow: hidden;
   border: 1px solid var(--color-border);
@@ -160,7 +160,7 @@
   position: relative;
   z-index: 1;
   font-family: var(--font-family-heading);
-  font-size: clamp(2.5rem, 10vw, 4.5rem);
+  font-size: clamp(2.25rem, 7vw, 3.5rem);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.05em;
   line-height: var(--line-height-tight);
@@ -175,7 +175,7 @@
   align-items: baseline;
   color: var(--color-brand);
   font-family: var(--font-family-heading);
-  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-size: clamp(1.75rem, 6vw, 2.75rem);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.04em;
 }
@@ -193,7 +193,7 @@
 }
 
 .section {
-  padding-block: var(--space-3xl);
+  padding-block: var(--section-block-space);
 }
 
 .informationSection,
@@ -211,7 +211,7 @@
 
 .sectionTitle {
   max-width: 16ch;
-  font-size: clamp(2.25rem, 8vw, 4.75rem);
+  font-size: var(--font-size-section-title);
   letter-spacing: -0.045em;
 }
 
@@ -229,7 +229,7 @@
 }
 
 .informationItem dt {
-  color: var(--color-charcoal-700);
+  color: var(--color-text-muted);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.1em;
@@ -274,24 +274,12 @@
 }
 
 .locationSection {
-  background: var(--color-charcoal-900);
+  color: var(--section-fg);
 }
 
 .locationGrid {
   display: grid;
-  gap: var(--space-xl);
   align-items: center;
-}
-
-.locationWord {
-  overflow: hidden;
-  color: var(--color-charcoal-800);
-  font-family: var(--font-family-heading);
-  font-size: clamp(5rem, 23vw, 12rem);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: -0.075em;
-  line-height: 0.8;
-  white-space: nowrap;
 }
 
 .locationContent {
@@ -302,13 +290,13 @@
 
 .locationContent address {
   max-width: 34rem;
-  color: var(--color-text-muted);
+  color: var(--section-muted);
   font-size: var(--font-size-lg);
   font-style: normal;
 }
 
 .externalNote {
-  color: var(--color-text-muted);
+  color: var(--section-muted);
   font-size: var(--font-size-xs);
 }
 
@@ -334,12 +322,12 @@
 }
 
 .contactOptions h3 {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-feature-title);
 }
 
 .contactOptions article > p:not(.optionNumber) {
   max-width: 31rem;
-  color: var(--color-charcoal-700);
+  color: var(--color-text-muted);
 }
 
 .textLink {
@@ -358,37 +346,36 @@
 }
 
 .benefitsSection {
-  color: var(--color-charcoal-950);
-  background: var(--color-red-500);
+  color: var(--section-fg);
 }
 
 .benefitsIntroduction .eyebrow {
-  color: var(--color-charcoal-950);
+  color: var(--section-accent);
 }
 
 .benefitList {
   display: grid;
   margin-top: var(--space-2xl);
-  border-top: 1px solid rgb(23 18 16 / 35%);
+  border-top: 1px solid var(--section-border);
 }
 
 .benefitList article {
   display: grid;
   gap: var(--space-lg);
   padding-block: var(--space-xl);
-  border-bottom: 1px solid rgb(23 18 16 / 35%);
+  border-bottom: 1px solid var(--section-border);
 }
 
 .benefitValue {
   font-family: var(--font-family-heading);
-  font-size: clamp(3.5rem, 15vw, 7.5rem);
+  font-size: clamp(3rem, 10vw, 5rem);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.06em;
   line-height: 0.85;
 }
 
 .benefitList article:last-child .benefitValue {
-  font-size: clamp(3.5rem, 7vw, 5rem);
+  font-size: clamp(2.75rem, 6vw, 4.25rem);
   white-space: nowrap;
 }
 
@@ -399,7 +386,7 @@
 }
 
 .benefitList h3 {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-feature-title);
 }
 
 .benefitList article > div > p {
@@ -414,28 +401,9 @@
 }
 
 .eligibleGroups {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2xs) var(--space-sm);
   margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.eligibleGroups li {
-  position: relative;
-  padding-left: var(--space-sm);
-}
-
-.eligibleGroups li::before {
-  position: absolute;
-  top: 0.7em;
-  left: 0;
-  width: 0.3rem;
-  height: 0.3rem;
-  border-radius: 50%;
-  background: var(--color-charcoal-950);
-  content: "";
+  color: var(--section-muted);
+  font-size: var(--font-size-base) !important;
 }
 
 .faqGrid {
@@ -494,7 +462,7 @@
 .faqList details > p {
   max-width: 43rem;
   padding: 0 var(--space-xl) var(--space-md) 0;
-  color: var(--color-charcoal-700);
+  color: var(--color-text-muted);
 }
 
 .finalCta {
@@ -515,7 +483,7 @@
 
 .finalCta h2 {
   max-width: 17ch;
-  font-size: clamp(2rem, 6vw, 3.75rem);
+  font-size: var(--font-size-section-title);
   letter-spacing: -0.04em;
 }
 
@@ -537,13 +505,11 @@
     gap: var(--space-xl);
   }
 
-  .locationGrid,
   .faqGrid,
   .finalCtaInner {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .locationGrid,
   .faqGrid {
     gap: clamp(var(--space-2xl), 8vw, 8rem);
   }
@@ -585,11 +551,10 @@
   .heroGrid {
     grid-template-columns: minmax(0, 1.3fr) minmax(20rem, 0.7fr);
     gap: clamp(var(--space-2xl), 8vw, 8rem);
-    min-height: calc(100svh - 5rem);
   }
 
   .schedulePanel {
-    min-height: 34rem;
+    min-height: 27rem;
     padding: var(--space-xl);
   }
 
@@ -597,9 +562,6 @@
     margin-left: min(16vw, 12rem);
   }
 
-  .locationWord {
-    font-size: clamp(8rem, 15vw, 12rem);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
