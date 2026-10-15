@@ -12,49 +12,78 @@
 
 .content {
   display: grid;
-  gap: var(--space-xl);
-  padding-block: var(--space-2xl);
+  grid-template-areas:
+    "brand"
+    "details"
+    "navigation"
+    "contacts"
+    "copyright";
+  gap: var(--space-sm);
+  padding-block: var(--space-md) var(--space-sm);
 }
 
 .brand {
-  display: grid;
-  align-content: start;
-  gap: var(--space-sm);
-  max-width: 28rem;
+  grid-area: brand;
 }
 
-.wordmark {
+.brandLink {
   display: inline-flex;
-  width: fit-content;
+  width: 8.5rem;
   min-height: 2.75rem;
   align-items: center;
-  color: var(--color-text);
-  font-family: var(--font-family-heading);
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
-  letter-spacing: -0.03em;
   text-decoration: none;
 }
 
-.wordmark:hover {
-  color: var(--color-brand);
+.logo {
+  width: 100%;
+  height: auto;
 }
 
-.tagline {
-  max-width: 24rem;
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-normal);
+.details {
+  grid-area: details;
+}
+
+.navigation {
+  grid-area: navigation;
+}
+
+.contacts {
+  grid-area: contacts;
 }
 
 .sectionTitle {
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-2xs);
   color: var(--color-brand);
   font-family: var(--font-family-body);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-snug);
   letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.address {
+  max-width: 27rem;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-style: normal;
+  line-height: var(--line-height-normal);
+}
+
+.schedule {
+  display: grid;
+  gap: var(--space-3xs);
+  margin-top: var(--space-xs);
+  font-size: var(--font-size-sm);
+}
+
+.detailTitle,
+.contactLabel {
+  color: var(--color-text);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
@@ -67,20 +96,23 @@
 
 .navigationList {
   display: grid;
-  gap: var(--space-3xs);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--space-sm);
 }
 
 .footerLink,
 .contactLink {
   display: inline-flex;
+  min-width: 2.75rem;
   min-height: 2.75rem;
   max-width: 100%;
   align-items: center;
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   text-decoration: none;
+  word-break: normal;
 }
 
 .footerLink:hover,
@@ -88,49 +120,19 @@
   color: var(--color-brand-hover);
 }
 
-.address {
-  max-width: 24rem;
-  color: var(--color-text-muted);
-  font-size: var(--font-size-sm);
-  font-style: normal;
-  line-height: var(--line-height-normal);
-}
-
-.schedule {
-  display: grid;
-  gap: var(--space-3xs);
-  margin-top: var(--space-md);
-  font-size: var(--font-size-sm);
-}
-
-.detailTitle,
-.contactLabel {
-  color: var(--color-text);
-  font-family: var(--font-family-body);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--line-height-snug);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
 .contactList {
   display: grid;
-  gap: var(--space-xs);
-}
-
-.contactItem {
-  display: grid;
-  gap: var(--space-3xs);
-  min-width: 0;
 }
 
 .contactLink {
   width: fit-content;
+  flex-wrap: wrap;
+  column-gap: var(--space-2xs);
 }
 
 .copyright {
-  padding-block: var(--space-md);
+  grid-area: copyright;
+  padding-top: var(--space-sm);
   border-top: 1px solid var(--color-border);
   color: var(--color-text-muted);
   font-size: var(--font-size-xs);
@@ -150,24 +152,51 @@
 
 @media (min-width: 48rem) {
   .content {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .brand {
-    grid-column: 1 / -1;
+    grid-template-areas:
+      "brand navigation"
+      "details contacts"
+      "copyright copyright";
+    grid-template-columns: minmax(12rem, 0.8fr) minmax(0, 1.2fr);
+    column-gap: var(--space-2xl);
   }
 }
 
 @media (min-width: 70rem) {
   .content {
+    grid-template-areas:
+      "brand navigation contacts"
+      "details details copyright";
     grid-template-columns:
-      minmax(16rem, 1.3fr)
-      minmax(9rem, 0.7fr)
-      minmax(14rem, 1fr)
-      minmax(16rem, 1.2fr);
+      minmax(10rem, 0.75fr)
+      minmax(20rem, 1.35fr)
+      minmax(17rem, 1fr);
+    align-items: start;
+    column-gap: clamp(var(--space-xl), 5vw, var(--space-3xl));
+    padding-block: var(--space-lg);
   }
 
-  .brand {
-    grid-column: auto;
+  .navigationList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .details {
+    display: grid;
+    grid-template-columns: minmax(18rem, auto) minmax(12rem, 1fr);
+    gap: var(--space-xs) var(--space-lg);
+    align-items: start;
+  }
+
+  .details .sectionTitle {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
+
+  .schedule {
+    margin-top: 0;
+  }
+
+  .copyright {
+    align-self: end;
+    text-align: right;
   }
 }

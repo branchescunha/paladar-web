@@ -73,6 +73,7 @@
   --container-lg: 80rem;
   --container-xl: 90rem;
   --container-gutter: clamp(1rem, 4vw, 3rem);
+  --header-height: 4.5rem;
 
   /* Shape and depth */
   --radius-xs: 0.25rem;
@@ -125,7 +126,7 @@ body {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-normal);
-  overflow-wrap: break-word;
+  overflow-wrap: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -148,8 +149,11 @@ h5,
 h6 {
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-bold);
+  hyphens: none;
   line-height: var(--line-height-tight);
+  overflow-wrap: normal;
   text-wrap: balance;
+  word-break: normal;
 }
 
 h1 {

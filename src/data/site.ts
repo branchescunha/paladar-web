@@ -10,6 +10,8 @@ export const siteRoutes = {
   contact: "/contato",
 } as const;
 
+export const homeStartHref = "/#inicio" as const;
+
 export type SiteRoute = (typeof siteRoutes)[keyof typeof siteRoutes];
 
 type NavigationItem = {
@@ -18,7 +20,6 @@ type NavigationItem = {
 };
 
 export const navigationItems = [
-  { label: "Início", href: siteRoutes.home },
   { label: "Cardápio", href: siteRoutes.menu },
   { label: "Marmitas", href: siteRoutes.lunchboxes },
   { label: "Sobre", href: siteRoutes.about },
