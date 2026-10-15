@@ -13,7 +13,7 @@
 }
 
 .intro {
-  padding-block: clamp(3.5rem, 9vw, 7rem);
+  padding-block: var(--section-block-space);
   background: var(--color-background);
 }
 
@@ -37,7 +37,7 @@
 
 .title {
   max-width: 10ch;
-  font-size: clamp(3.5rem, 15vw, 7.5rem);
+  font-size: var(--font-size-page-title);
   letter-spacing: -0.055em;
 }
 
@@ -58,8 +58,7 @@
 }
 
 .categoryNavigation {
-  border-block: 1px solid var(--color-border);
-  background: var(--color-charcoal-900);
+  border-block: 1px solid var(--section-border);
 }
 
 .categoryNavigation ul {
@@ -75,21 +74,21 @@
   min-height: 2.75rem;
   align-items: center;
   padding-inline: var(--space-sm);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--section-border);
   border-radius: var(--radius-pill);
-  color: var(--color-text);
+  color: var(--section-fg);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
 }
 
 .categoryNavigation a:hover {
-  border-color: var(--color-brand);
-  color: var(--color-brand);
+  border-color: var(--section-accent);
+  color: var(--section-accent);
 }
 
 .section {
-  padding-block: var(--space-3xl);
+  padding-block: var(--section-block-space);
   scroll-margin-top: 6rem;
 }
 
@@ -105,17 +104,17 @@
 }
 
 .sectionIntroduction h2 {
-  font-size: clamp(2.75rem, 9vw, 5rem);
+  font-size: var(--font-size-section-title);
   letter-spacing: -0.045em;
 }
 
 .sectionIntroduction > p:not(.eyebrow) {
-  color: var(--color-text-muted);
+  color: var(--section-muted);
   font-size: var(--font-size-lg);
 }
 
 .beveragesSection .sectionIntroduction > p:not(.eyebrow) {
-  color: var(--color-charcoal-700);
+  color: var(--section-muted);
 }
 
 .categories {
@@ -139,12 +138,12 @@
 }
 
 .categoryHeading h3 {
-  font-size: clamp(1.75rem, 7vw, 2.75rem);
+  font-size: var(--font-size-feature-title);
 }
 
 .categoryHeading p {
   max-width: 28rem;
-  color: var(--color-charcoal-700);
+  color: var(--color-text-muted);
 }
 
 .itemList,
@@ -187,7 +186,7 @@
 }
 
 .optionList dt {
-  color: var(--color-charcoal-700);
+  color: var(--color-text-muted);
   font-size: var(--font-size-sm);
 }
 
@@ -201,49 +200,32 @@
 }
 
 .dessertsSection {
-  border-top: 1px solid var(--color-border);
-  background: var(--color-charcoal-900);
+  border-top: 1px solid var(--section-border);
 }
 
 .dessertList {
   display: grid;
   margin-top: var(--space-2xl);
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--section-border);
 }
 
 .dessertList li {
   display: grid;
   gap: var(--space-xs);
   padding-block: var(--space-lg);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--section-border);
 }
 
 .dessertList h3 {
-  color: var(--color-text);
+  color: var(--section-fg);
 }
 
 .dessertList p {
   max-width: 35rem;
-  color: var(--color-text-muted);
-}
-
-.visuallyHidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  color: var(--section-muted);
 }
 
 @media (min-width: 48rem) {
-  .title {
-    font-size: clamp(4rem, 10vw, 7.5rem);
-  }
-
   .intro .container {
     grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
     column-gap: var(--space-2xl);
@@ -273,8 +255,26 @@
   }
 
   .menuItem {
-    grid-template-columns: minmax(0, 1fr) minmax(13rem, 0.8fr);
+    grid-template-columns: minmax(0, 1fr) minmax(8rem, 0.65fr) auto;
     gap: var(--space-lg);
+  }
+
+  .menuItem h4 {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .optionList,
+  .optionList > div {
+    display: contents;
+  }
+
+  .optionList dt {
+    grid-column: 2;
+  }
+
+  .optionList dd {
+    grid-column: 3;
   }
 
   .dessertList {
@@ -283,7 +283,7 @@
 
   .dessertList li {
     padding-inline: var(--space-md);
-    border-right: 1px solid var(--color-border);
+    border-right: 1px solid var(--section-border);
   }
 
   .dessertList li:first-child {

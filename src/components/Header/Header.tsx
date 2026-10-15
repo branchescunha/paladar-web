@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
 import {
   homeStartHref,
   navigationItems,
@@ -66,20 +67,23 @@ export function Header() {
           />
         </Link>
 
-        <button
-          ref={menuButtonRef}
-          className={styles.menuButton}
-          type="button"
-          aria-expanded={isMenuOpen}
-          aria-controls="primary-navigation"
-          aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
-          onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
-        >
-          <span className={styles.menuIcon} aria-hidden="true">
-            <span className={styles.menuLine} />
-            <span className={styles.menuLine} />
-          </span>
-        </button>
+        <div className={styles.controls}>
+          <ThemeToggle />
+          <button
+            ref={menuButtonRef}
+            className={styles.menuButton}
+            type="button"
+            aria-expanded={isMenuOpen}
+            aria-controls="primary-navigation"
+            aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+            onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+          >
+            <span className={styles.menuIcon} aria-hidden="true">
+              <span className={styles.menuLine} />
+              <span className={styles.menuLine} />
+            </span>
+          </button>
+        </div>
 
         <nav
           id="primary-navigation"

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { restaurantContent } from "@/data/restaurant";
+import { siteLinks } from "@/data/site-links";
 import { siteContent, siteRoutes } from "@/data/site";
 import styles from "./page.module.css";
 
@@ -15,25 +16,22 @@ const currencyFormatter = new Intl.NumberFormat("pt-BR", {
   currency: "BRL",
 });
 
-function addWhatsAppMessage(href: string, message: string) {
-  return `${href}?text=${encodeURIComponent(message)}`;
-}
+const listFormatter = new Intl.ListFormat("pt-BR", {
+  style: "long",
+  type: "conjunction",
+});
 
 export default function ContactPage() {
   const { address, contacts, externalLinks, restaurantHours } = siteContent;
   const { benefits, delivery, service } = restaurantContent;
-  const fullAddress = `${address.line1}, ${address.line2}`;
-  const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
-  const generalWhatsAppHref = addWhatsAppMessage(
-    contacts.generalWhatsApp.href,
-    "Olá! Gostaria de falar com o Paladar.",
-  );
-  const lunchboxWhatsAppHref = addWhatsAppMessage(
-    contacts.lunchboxWhatsApp.href,
-    "Olá! Gostaria de fazer um pedido de marmita.",
-  );
+  const mapsHref = externalLinks.googleMaps.href;
+  const generalWhatsAppHref = siteLinks.whatsApp.general;
+  const lunchboxWhatsAppHref = siteLinks.whatsApp.lunchboxes.general;
   const uniformedPrice = currencyFormatter.format(
     benefits.uniformedPersonnel.price.amountInCents / 100,
+  );
+  const eligibleGroups = listFormatter.format(
+    benefits.uniformedPersonnel.eligibleGroups,
   );
 
   return (
@@ -194,11 +192,9 @@ export default function ContactPage() {
       <section
         className={`${styles.section} ${styles.locationSection}`}
         aria-labelledby="location-title"
+        data-surface="dark"
       >
         <div className={`${styles.container} ${styles.locationGrid}`}>
-          <p className={styles.locationWord} aria-hidden="true">
-            Setor O
-          </p>
           <div className={styles.locationContent}>
             <p className={styles.eyebrow}>Onde estamos</p>
             <h2 id="location-title" className={styles.sectionTitle}>
@@ -295,10 +291,11 @@ export default function ContactPage() {
       <section
         className={`${styles.section} ${styles.benefitsSection}`}
         aria-labelledby="benefits-title"
+        data-surface="red"
       >
         <div className={styles.container}>
           <div className={styles.benefitsIntroduction}>
-            <p className={styles.eyebrow}>Benefícios confirmados</p>
+            <p className={styles.eyebrow}>Benefícios</p>
             <h2 id="benefits-title" className={styles.sectionTitle}>
               Condições especiais, apresentadas com clareza.
             </h2>
@@ -326,12 +323,8 @@ export default function ContactPage() {
                   {benefits.uniformedPersonnel.offer} por {uniformedPrice} para
                   profissionais {benefits.uniformedPersonnel.conditions.join(" e ")}.
                 </p>
-                <p className={styles.eligibleLabel}>Públicos informados:</p>
-                <ul className={styles.eligibleGroups}>
-                  {benefits.uniformedPersonnel.eligibleGroups.map((group) => (
-                    <li key={group}>{group}</li>
-                  ))}
-                </ul>
+                <p className={styles.eligibleLabel}>Público incluído:</p>
+                <p className={styles.eligibleGroups}>{eligibleGroups}.</p>
               </div>
             </article>
           </div>
@@ -446,7 +439,7 @@ export default function ContactPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              WhatsApp geral
+              WhatsApp
               <span className={styles.visuallyHidden}>
                 {" "}(abre o WhatsApp em nova aba)
               </span>

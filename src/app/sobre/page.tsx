@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { restaurantContent } from "@/data/restaurant";
-import { siteRoutes } from "@/data/site";
+import { siteContent, siteRoutes } from "@/data/site";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -78,6 +78,7 @@ export default function AboutPage() {
       <section
         className={`${styles.section} ${styles.journeySection}`}
         aria-labelledby="journey-title"
+        data-surface="dark"
       >
         <div className={`${styles.container} ${styles.journeyGrid}`}>
           <div className={styles.journeyIntroduction}>
@@ -153,6 +154,7 @@ export default function AboutPage() {
       <section
         className={`${styles.section} ${styles.evolutionSection}`}
         aria-labelledby="evolution-title"
+        data-surface="brand"
       >
         <div className={`${styles.container} ${styles.evolutionGrid}`}>
           <div>
@@ -219,12 +221,15 @@ export default function AboutPage() {
             >
               Ver cardápio
             </Link>
-            <Link
+            <a
               className={`${styles.button} ${styles.buttonGhost}`}
-              href={siteRoutes.contact}
+              href={siteContent.externalLinks.googleMaps.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Como chegar pelo Google Maps (abre em nova aba)"
             >
               Como chegar
-            </Link>
+            </a>
           </div>
         </div>
       </section>

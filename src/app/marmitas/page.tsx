@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { restaurantContent, type Money } from "@/data/restaurant";
+import { siteLinks } from "@/data/site-links";
 import { siteContent, siteRoutes } from "@/data/site";
 import styles from "./page.module.css";
 
@@ -15,27 +16,13 @@ const currencyFormatter = new Intl.NumberFormat("pt-BR", {
   currency: "BRL",
 });
 
-const generalOrderMessage =
-  "Olá! Gostaria de fazer um pedido de marmita no Paladar.";
-
 function formatMoney(money: Money) {
   return currencyFormatter.format(money.amountInCents / 100);
-}
-
-function getWhatsAppUrl(message: string) {
-  return `${siteContent.contacts.lunchboxWhatsApp.href}?text=${encodeURIComponent(message)}`;
-}
-
-function getLunchboxOrderMessage(name: string) {
-  return `Olá! Gostaria de pedir uma Marmita ${name} do Paladar.`;
 }
 
 export default function LunchboxesPage() {
   const { delivery, lunchboxes } = restaurantContent;
   const { lunchboxWhatsApp } = siteContent.contacts;
-  const hasProvisionalLunchboxContent = Object.values(lunchboxes.status).some(
-    (status) => status === "provisional",
-  );
 
   return (
     <main className={styles.main}>
@@ -47,14 +34,14 @@ export default function LunchboxesPage() {
               Marmitas do seu jeito.
             </h1>
             <p className={styles.heroText}>
-              Monte sua marmita no buffet ou escolha uma proposta da casa para
+              Monte sua marmita no buffet ou escolha uma opção da casa para
               tornar o almoço mais prático.
             </p>
 
             <div className={styles.actions}>
               <a
                 className={`${styles.button} ${styles.buttonPrimary}`}
-                href={getWhatsAppUrl(generalOrderMessage)}
+                href={siteLinks.whatsApp.lunchboxes.general}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -131,8 +118,7 @@ export default function LunchboxesPage() {
               </p>
               <h3>Marmitas da Casa</h3>
               <p>
-                Escolha entre quatro propostas provisórias pensadas para
-                facilitar o pedido.
+                Escolha entre quatro opções pensadas para facilitar o pedido.
               </p>
             </article>
           </div>
@@ -142,21 +128,16 @@ export default function LunchboxesPage() {
       <section
         className={`${styles.section} ${styles.houseSection}`}
         aria-labelledby="house-lunchboxes-title"
+        data-surface="dark"
       >
         <div className={styles.container}>
           <div className={styles.houseIntroduction}>
             <div>
               <p className={styles.eyebrow}>Marmitas da Casa</p>
               <h2 id="house-lunchboxes-title">
-                Quatro propostas para o seu almoço.
+                Quatro opções para o seu almoço.
               </h2>
             </div>
-            {hasProvisionalLunchboxContent && (
-              <p className={styles.provisionalNotice}>
-                Nomes, composições e preços são provisórios e ainda podem ser
-                alterados.
-              </p>
-            )}
           </div>
 
           <ol className={styles.lunchboxGrid}>
@@ -167,12 +148,7 @@ export default function LunchboxesPage() {
                     <span aria-hidden="true">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <p>
-                      {lunchboxes.status.names === "provisional" ||
-                      lunchboxes.status.compositions === "provisional"
-                        ? "Proposta provisória"
-                        : "Marmita da Casa"}
-                    </p>
+                    <p>Marmita da Casa</p>
                   </div>
                   <h3>{lunchbox.name}</h3>
                   <p className={styles.composition}>
@@ -180,18 +156,16 @@ export default function LunchboxesPage() {
                   </p>
                   <div className={styles.cardFooter}>
                     <p>
-                      <span>
-                        {lunchbox.price.status === "provisional"
-                          ? "Preço provisório"
-                          : "Preço"}
-                      </span>
+                      <span>Preço</span>
                       <strong>{formatMoney(lunchbox.price)}</strong>
                     </p>
                     <a
                       className={styles.orderLink}
-                      href={getWhatsAppUrl(
-                        getLunchboxOrderMessage(lunchbox.name),
-                      )}
+                      href={
+                        siteLinks.whatsApp.lunchboxes.options[
+                          lunchbox.id as keyof typeof siteLinks.whatsApp.lunchboxes.options
+                        ]
+                      }
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -211,6 +185,7 @@ export default function LunchboxesPage() {
       <section
         className={`${styles.section} ${styles.deliverySection}`}
         aria-labelledby="delivery-title"
+        data-surface="brand"
       >
         <div className={`${styles.container} ${styles.deliveryGrid}`}>
           <div>
@@ -243,9 +218,7 @@ export default function LunchboxesPage() {
                   <dd>
                     {formatMoney(area.fee)}
                     <span>
-                      {area.fee.status === "provisional"
-                        ? "Taxa provisória"
-                        : "Taxa de entrega"}
+                      Taxa de entrega
                     </span>
                   </dd>
                 </div>
@@ -258,7 +231,7 @@ export default function LunchboxesPage() {
 
             <a
               className={`${styles.button} ${styles.buttonDark}`}
-              href={getWhatsAppUrl(generalOrderMessage)}
+              href={siteLinks.whatsApp.lunchboxes.general}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -285,7 +258,7 @@ export default function LunchboxesPage() {
             <li>
               <span>01</span>
               <h3>Escolha a marmita</h3>
-              <p>Monte no peso ou selecione uma proposta da casa.</p>
+              <p>Monte no peso ou selecione uma opção da casa.</p>
             </li>
             <li>
               <span>02</span>
@@ -311,7 +284,7 @@ export default function LunchboxesPage() {
           </div>
           <a
             className={`${styles.button} ${styles.buttonDark}`}
-            href={getWhatsAppUrl(generalOrderMessage)}
+            href={siteLinks.whatsApp.lunchboxes.general}
             target="_blank"
             rel="noopener noreferrer"
           >

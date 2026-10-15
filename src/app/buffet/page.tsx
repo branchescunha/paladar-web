@@ -83,6 +83,7 @@ export default function BuffetPage() {
       <section
         className={`${styles.section} ${styles.connectionSection}`}
         aria-labelledby="connection-title"
+        data-surface="dark"
       >
         <div className={styles.container}>
           <div className={styles.connectionIntroduction}>
@@ -119,6 +120,7 @@ export default function BuffetPage() {
       <section
         className={`${styles.section} ${styles.mediaSection}`}
         aria-labelledby="media-title"
+        data-surface="red"
       >
         <div className={`${styles.container} ${styles.mediaGrid}`}>
           <div className={styles.mediaComposition} aria-hidden="true">

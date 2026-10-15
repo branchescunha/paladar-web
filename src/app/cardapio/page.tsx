@@ -43,7 +43,11 @@ export default function MenuPage() {
         </div>
       </header>
 
-      <nav className={styles.categoryNavigation} aria-label="Categorias do cardápio">
+      <nav
+        className={styles.categoryNavigation}
+        aria-label="Categorias do cardápio"
+        data-surface="dark"
+      >
         <ul className={styles.container}>
           {beverageCategories.map((category) => (
             <li key={category.id}>
@@ -90,17 +94,11 @@ export default function MenuPage() {
                       <h4>{item.name}</h4>
                       <dl className={styles.optionList}>
                         {item.options.map((option, optionIndex) => {
-                          const optionLabel = getOptionLabel(option);
+                          const optionLabel = getOptionLabel(option) || "—";
 
                           return (
                             <div key={`${optionLabel}-${optionIndex}`}>
-                              <dt
-                                className={
-                                  optionLabel ? undefined : styles.visuallyHidden
-                                }
-                              >
-                                {optionLabel || "Preço"}
-                              </dt>
+                              <dt>{optionLabel}</dt>
                               <dd>{formatPrice(option)}</dd>
                             </div>
                           );
@@ -119,6 +117,7 @@ export default function MenuPage() {
         id="sobremesas"
         className={`${styles.section} ${styles.dessertsSection}`}
         aria-labelledby="desserts-title"
+        data-surface="dark"
       >
         <div className={styles.container}>
           <div className={styles.sectionIntroduction}>

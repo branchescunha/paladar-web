@@ -33,7 +33,7 @@
 .heroGrid {
   display: grid;
   gap: var(--space-xl);
-  padding-block: clamp(4.5rem, 10vw, 8.5rem);
+  padding-block: var(--section-block-space);
 }
 
 .heroContent {
@@ -57,7 +57,7 @@
 
 .heroTitle {
   max-width: 13ch;
-  font-size: clamp(3.25rem, 11vw, 7.25rem);
+  font-size: var(--font-size-page-title);
   letter-spacing: -0.055em;
 }
 
@@ -72,7 +72,7 @@
   align-self: end;
   color: var(--color-secondary);
   font-family: var(--font-family-heading);
-  font-size: clamp(5rem, 25vw, 13rem);
+  font-size: clamp(4rem, 18vw, 7rem);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.08em;
   line-height: 0.75;
@@ -80,7 +80,7 @@
 }
 
 .section {
-  padding-block: var(--space-3xl);
+  padding-block: var(--section-block-space);
 }
 
 .originSection {
@@ -100,7 +100,7 @@
 .sectionTitle {
   max-width: 16ch;
   margin-top: var(--space-sm);
-  font-size: clamp(2.25rem, 8vw, 4.75rem);
+  font-size: var(--font-size-section-title);
   letter-spacing: -0.045em;
 }
 
@@ -121,14 +121,12 @@
   line-height: var(--line-height-snug);
 }
 
-.originContent p:last-child,
-.evolutionContent > p {
-  color: var(--color-charcoal-700);
+.originContent p:last-child {
+  color: var(--color-text-muted);
 }
 
 .journeySection {
-  border-block: 1px solid var(--color-border);
-  background: var(--color-charcoal-900);
+  border-block: 1px solid var(--section-border);
 }
 
 .journeyIntroduction {
@@ -138,7 +136,7 @@
 .milestoneList {
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--section-border);
   list-style: none;
 }
 
@@ -146,13 +144,13 @@
   display: grid;
   gap: var(--space-md);
   padding-block: var(--space-xl);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--section-border);
 }
 
 .milestonePeriod {
-  color: var(--color-brand);
+  color: var(--section-accent);
   font-family: var(--font-family-heading);
-  font-size: clamp(3.25rem, 16vw, 6.25rem);
+  font-size: clamp(2.75rem, 10vw, 4.5rem);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.065em;
   line-height: 0.85;
@@ -169,23 +167,26 @@
 
 .milestoneContent p {
   max-width: 38rem;
-  color: var(--color-text-muted);
+  color: var(--section-muted);
 }
 
 .evolutionSection {
-  color: var(--color-text-dark);
-  background: var(--color-orange-500);
+  color: var(--section-fg);
 }
 
 .evolutionSection .eyebrowDark {
-  color: var(--color-charcoal-950);
+  color: var(--section-accent);
+}
+
+.evolutionContent > p {
+  color: var(--section-muted);
 }
 
 .evolutionContent ul {
   display: grid;
   margin: var(--space-sm) 0 0;
   padding: 0;
-  border-top: 1px solid rgb(23 18 16 / 35%);
+  border-top: 1px solid var(--section-border);
   list-style: none;
 }
 
@@ -195,7 +196,7 @@
   align-items: center;
   min-height: 3.75rem;
   padding-block: var(--space-xs);
-  border-bottom: 1px solid rgb(23 18 16 / 35%);
+  border-bottom: 1px solid var(--section-border);
   font-family: var(--font-family-heading);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
@@ -205,7 +206,7 @@
   width: 0.5rem;
   height: 0.5rem;
   border-radius: var(--radius-pill);
-  background: var(--color-secondary-on-light);
+  background: var(--section-fg);
   content: "";
   flex: 0 0 auto;
 }
@@ -231,19 +232,20 @@
 }
 
 .placeWord {
-  color: var(--color-charcoal-800);
+  color: var(--color-border);
   font-family: var(--font-family-heading);
   font-size: clamp(4rem, 18vw, 11rem);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.075em;
   line-height: 0.75;
+  opacity: 0.65;
   word-break: break-word;
 }
 
 .finalCta {
   padding-block: var(--space-2xl);
   color: var(--color-text-dark);
-  background: var(--color-cream-100);
+  background: var(--color-surface-muted);
 }
 
 .finalCtaInner {
@@ -257,7 +259,7 @@
 
 .finalCta h2 {
   max-width: 17ch;
-  font-size: clamp(2rem, 6vw, 3.75rem);
+  font-size: var(--font-size-section-title);
   letter-spacing: -0.04em;
 }
 
@@ -288,23 +290,23 @@
 }
 
 .buttonDark {
-  color: var(--color-text);
+  color: var(--color-on-dark);
   background: var(--color-charcoal-950);
 }
 
 .buttonDark:hover {
-  color: var(--color-text);
+  color: var(--color-on-dark);
   background: var(--color-charcoal-800);
 }
 
 .buttonGhost {
-  border-color: var(--color-charcoal-700);
+  border-color: var(--color-border-dark);
   color: var(--color-text-dark);
   background: transparent;
 }
 
 .buttonGhost:hover {
-  border-color: var(--color-charcoal-950);
+  border-color: var(--color-text-dark);
   color: var(--color-text-dark);
   background: rgb(23 18 16 / 8%);
 }
@@ -340,11 +342,10 @@
     grid-template-columns: minmax(0, 1.35fr) minmax(20rem, 0.65fr);
     gap: clamp(var(--space-2xl), 8vw, 8rem);
     align-items: end;
-    min-height: calc(100svh - 5rem);
   }
 
   .heroYear {
-    font-size: clamp(6rem, 12vw, 9rem);
+    font-size: clamp(4.5rem, 8vw, 6.5rem);
     text-align: right;
   }
 

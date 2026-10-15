@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { siteLinks } from "@/data/site-links";
 import {
   homeStartHref,
   navigationItems,
@@ -87,7 +88,7 @@ export function Footer() {
               <li>
                 <a
                   className={styles.contactLink}
-                  href={siteContent.contacts.generalWhatsApp.href}
+                  href={siteLinks.whatsApp.general}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -102,7 +103,7 @@ export function Footer() {
               <li>
                 <a
                   className={styles.contactLink}
-                  href={siteContent.contacts.lunchboxWhatsApp.href}
+                  href={siteLinks.whatsApp.lunchboxes.general}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -137,6 +138,7 @@ export function Footer() {
               © {currentYear} {siteContent.brand.primaryName}. Todos os direitos
               reservados.
             </p>
+            <p>CNPJ {siteContent.legal.cnpj}</p>
           </div>
         </div>
       </div>
