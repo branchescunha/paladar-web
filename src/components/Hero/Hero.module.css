@@ -1,6 +1,4 @@
 .heroScroll {
-  --hero-header-height: 4.75rem;
-
   position: relative;
   height: 300svh;
   background: var(--color-background);
@@ -8,9 +6,9 @@
 
 .heroSticky {
   position: sticky;
-  top: var(--hero-header-height);
-  height: calc(100vh - var(--hero-header-height));
-  height: calc(100svh - var(--hero-header-height));
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  height: calc(100svh - var(--header-height));
   overflow: hidden;
   isolation: isolate;
   background: var(--color-charcoal-950);
@@ -74,8 +72,9 @@
 }
 
 @media (min-width: 64rem) {
-  .heroScroll {
-    --hero-header-height: 5rem;
+  .posterImage,
+  .video {
+    object-position: center 25%;
   }
 
   .scrim {

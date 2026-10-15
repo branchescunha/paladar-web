@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import {
+  homeStartHref,
   navigationItems,
   siteContent,
   siteRoutes,
@@ -48,12 +50,20 @@ export function Header() {
     <header className={styles.header}>
       <div className={styles.inner}>
         <Link
-          className={styles.wordmark}
-          href={siteRoutes.home}
-          aria-label={`${siteContent.brand.primaryName} — página inicial`}
+          className={styles.brandLink}
+          href={homeStartHref}
+          aria-label={`${siteContent.brand.primaryName} — início da página`}
           onClick={closeMenu}
         >
-          {siteContent.brand.primaryName}
+          <Image
+            className={styles.logo}
+            src="/images/brand/paladar-logo-transparent.png"
+            alt=""
+            width={1480}
+            height={916}
+            sizes="110px"
+            loading="eager"
+          />
         </Link>
 
         <button

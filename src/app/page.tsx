@@ -1,122 +1,98 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Hero } from "@/components/Hero/Hero";
 import { restaurantContent } from "@/data/restaurant";
 import { siteContent, siteRoutes } from "@/data/site";
 import styles from "./page.module.css";
 
-const [selfService, customLunchbox] = restaurantContent.service.formats;
+const [selfService] = restaurantContent.service.formats;
 const [
   barbecue,
   premiumCuts,
   salads,
   hotDishes,
   proteins,
-  houseLunchboxes,
 ] = restaurantContent.highlights;
 
 export default function Home() {
   const { restaurantHours } = siteContent;
-  const { delivery, history } = restaurantContent;
+  const { history } = restaurantContent;
 
   return (
-    <main className={styles.main}>
+    <main id="inicio" className={styles.main}>
       <Hero labelledBy="hero-title">
         <div className={`${styles.container} ${styles.heroGrid}`}>
           <div className={styles.heroContent}>
-            <p className={styles.eyebrow}>
-              Restaurante em Ceilândia desde {history.foundation.year}
-            </p>
+            <p className={styles.eyebrow}>Restaurante em Ceilândia</p>
             <h1 id="hero-title" className={styles.heroTitle}>
               Tradição à mesa, todos os dias.
             </h1>
             <p className={styles.heroText}>
-              {selfService}, {barbecue} e variedade para um almoço completo no
-              Setor O.
+              Self-service e churrasco para um almoço completo no Setor O.
             </p>
-
-            <div className={styles.actions}>
-              <Link
-                className={`${styles.button} ${styles.buttonPrimary}`}
-                href={siteRoutes.menu}
-              >
-                Ver cardápio
-              </Link>
-              <Link
-                className={`${styles.button} ${styles.buttonSecondary}`}
-                href={siteRoutes.lunchboxes}
-              >
-                Conhecer marmitas
-              </Link>
-            </div>
-
-            <div className={styles.heroSchedule}>
-              <span>{restaurantHours.days}</span>
-              <p>
-                <time dateTime={restaurantHours.opensAt}>
-                  {restaurantHours.opensAtLabel}
-                </time>{" "}
-                às{" "}
-                <time dateTime={restaurantHours.closesAt}>
-                  {restaurantHours.closesAtLabel}
-                </time>
-              </p>
-            </div>
-          </div>
-
-          <div className={styles.heroPanel} aria-label="Destaques do Paladar">
-            <p className={styles.heroPanelLabel}>Desde</p>
-            <p className={styles.heroYear}>{history.foundation.year}</p>
-            <ul className={styles.heroHighlights}>
-              <li>{selfService}</li>
-              <li>{barbecue}</li>
-              <li>{premiumCuts}</li>
-            </ul>
+            <Link
+              className={`${styles.button} ${styles.buttonPrimary}`}
+              href={siteRoutes.menu}
+            >
+              Ver cardápio
+            </Link>
           </div>
         </div>
       </Hero>
 
       <section
         className={`${styles.section} ${styles.lightSection}`}
-        aria-labelledby="self-service-title"
+        aria-labelledby="lunch-title"
       >
-        <div className={`${styles.container} ${styles.editorialGrid}`}>
-          <div>
-            <p className={`${styles.eyebrow} ${styles.eyebrowDark}`}>
-              Nosso almoço
-            </p>
-            <h2 id="self-service-title" className={styles.sectionTitle}>
-              Variedade para montar o prato do seu jeito.
-            </h2>
+        <div className={`${styles.container} ${styles.featureGrid}`}>
+          <div className={styles.mediaFrame}>
+            <Image
+              className={styles.mediaImage}
+              src="/images/site/restaurant-buffet.webp"
+              alt="Buffet de saladas e acompanhamentos do Paladar"
+              width={1440}
+              height={810}
+              sizes="(min-width: 48rem) 50vw, 100vw"
+            />
           </div>
 
-          <div className={styles.sectionCopy}>
-            <p>
-              O buffet reúne opções para uma experiência presencial completa,
-              com almoço servido todos os dias.
+          <div className={styles.editorialContent}>
+            <p className={`${styles.eyebrow} ${styles.eyebrowDark}`}>
+              O almoço no Paladar
             </p>
-            <p className={styles.serviceNote}>
-              {restaurantContent.service.mealService}
+            <h2 id="lunch-title" className={styles.sectionTitle}>
+              Variedade para montar o prato do seu jeito.
+            </h2>
+            <p>
+              O {selfService} reúne opções para um almoço completo, servido
+              todos os dias.
+            </p>
+            <p className={styles.detailLine}>
+              {salads}, {hotDishes} e {proteins}.
             </p>
           </div>
         </div>
-
-        <ul className={`${styles.container} ${styles.featureList}`}>
-          <li>{salads}</li>
-          <li>{hotDishes}</li>
-          <li>{proteins}</li>
-        </ul>
       </section>
 
       <section
-        className={`${styles.section} ${styles.grillSection}`}
+        className={`${styles.section} ${styles.lightSection} ${styles.dividedSection}`}
         aria-labelledby="grill-title"
       >
-        <div className={`${styles.container} ${styles.grillGrid}`}>
-          <div className={styles.grillStatement} aria-hidden="true">
-            Brasa
+        <div
+          className={`${styles.container} ${styles.featureGrid} ${styles.featureGridReverse}`}
+        >
+          <div className={styles.mediaFrame}>
+            <Image
+              className={styles.mediaImage}
+              src="/images/site/restaurant-grill.webp"
+              alt="Churrasqueira do restaurante Paladar"
+              width={1440}
+              height={810}
+              sizes="(min-width: 48rem) 50vw, 100vw"
+            />
           </div>
-          <div className={styles.grillContent}>
-            <p className={styles.eyebrow}>Churrasco</p>
+
+          <div className={styles.editorialContent}>
             <h2 id="grill-title" className={styles.sectionTitle}>
               Da brasa aos cortes nobres.
             </h2>
@@ -124,73 +100,30 @@ export default function Home() {
               O {barbecue} ocupa lugar de destaque no almoço, com {premiumCuts}{" "}
               entre as opções do Paladar.
             </p>
-            <ul className={styles.inlineHighlights}>
-              <li>{barbecue}</li>
-              <li>{premiumCuts}</li>
-            </ul>
           </div>
         </div>
       </section>
 
       <section
-        className={`${styles.section} ${styles.lunchboxSection}`}
-        aria-labelledby="lunchbox-title"
-      >
-        <div className={`${styles.container} ${styles.lunchboxGrid}`}>
-          <div>
-            <p className={`${styles.eyebrow} ${styles.eyebrowDark}`}>
-              Marmitas
-            </p>
-            <h2 id="lunchbox-title" className={styles.sectionTitle}>
-              O almoço do Paladar para levar.
-            </h2>
-            <p className={styles.lunchboxIntro}>
-              Duas maneiras de levar o almoço do Paladar com praticidade.
-            </p>
-          </div>
-
-          <div className={styles.lunchboxDetails}>
-            <dl className={styles.definitionList}>
-              <div>
-                <dt>Monte como preferir</dt>
-                <dd>{customLunchbox}</dd>
-              </div>
-              <div>
-                <dt>Praticidade</dt>
-                <dd>{houseLunchboxes}</dd>
-              </div>
-              <div>
-                <dt>Delivery</dt>
-                <dd>
-                  <time dateTime={delivery.hours.opensAt}>
-                    {delivery.hours.opensAtLabel}
-                  </time>{" "}
-                  às{" "}
-                  <time dateTime={delivery.hours.closesAt}>
-                    {delivery.hours.closesAtLabel}
-                  </time>
-                </dd>
-              </div>
-            </dl>
-
-            <Link
-              className={`${styles.button} ${styles.buttonDark}`}
-              href={siteRoutes.lunchboxes}
-            >
-              Ver opções de marmitas
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section
-        className={`${styles.section} ${styles.storySection}`}
+        className={`${styles.section} ${styles.lightSection} ${styles.dividedSection}`}
         aria-labelledby="story-title"
       >
-        <div className={`${styles.container} ${styles.storyGrid}`}>
-          <p className={styles.storyYear}>{history.foundation.year}</p>
-          <div className={styles.storyContent}>
-            <p className={styles.eyebrow}>Nossa história</p>
+        <div className={`${styles.container} ${styles.featureGrid}`}>
+          <div className={styles.mediaFrame}>
+            <Image
+              className={styles.mediaImage}
+              src="/images/site/restaurant-entrance.webp"
+              alt="Entrada do restaurante Paladar em Ceilândia"
+              width={1280}
+              height={720}
+              sizes="(min-width: 48rem) 50vw, 100vw"
+            />
+          </div>
+
+          <div className={styles.editorialContent}>
+            <p className={`${styles.eyebrow} ${styles.eyebrowDark}`}>
+              Desde {history.foundation.year}
+            </p>
             <h2 id="story-title" className={styles.sectionTitle}>
               Uma história de família construída em Ceilândia.
             </h2>
@@ -206,53 +139,34 @@ export default function Home() {
       </section>
 
       <section
-        className={`${styles.section} ${styles.spaceSection}`}
-        aria-labelledby="space-title"
+        className={`${styles.section} ${styles.servicesSection}`}
+        aria-labelledby="beyond-title"
       >
-        <div className={`${styles.container} ${styles.spaceGrid}`}>
-          <div className={styles.spaceContent}>
-            <p className={`${styles.eyebrow} ${styles.eyebrowDark}`}>
-              Nosso espaço
-            </p>
-            <h2 id="space-title" className={styles.sectionTitle}>
-              Um ponto de encontro para o almoço no Setor O.
+        <div className={styles.container}>
+          <div className={styles.sectionIntro}>
+            <h2 id="beyond-title" className={styles.sectionTitle}>
+              Além do restaurante
             </h2>
-            <p>
-              A experiência do Paladar acontece presencialmente em Ceilândia,
-              com {selfService} e {barbecue} todos os dias.
-            </p>
           </div>
-          <p className={styles.spaceWord} aria-hidden="true">
-            Ceilândia
-          </p>
-        </div>
-      </section>
 
-      <section
-        className={`${styles.section} ${styles.buffetSection}`}
-        aria-labelledby="buffet-title"
-      >
-        <div className={`${styles.container} ${styles.buffetGrid}`}>
-          <div>
-            <p className={styles.eyebrow}>Paladar Buffet</p>
-            <h2 id="buffet-title" className={styles.sectionTitle}>
-              Festas e eventos têm um Paladar próprio.
-            </h2>
-          </div>
-          <div className={styles.sectionCopy}>
-            <p>
-              O Paladar Buffet é o serviço separado para festas e eventos, com
-              site próprio.
-            </p>
-            <a
-              className={`${styles.button} ${styles.buttonOutline}`}
-              href={siteContent.externalLinks.buffet.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Conhecer o Paladar Buffet
-              <span className={styles.visuallyHidden}> (abre em nova aba)</span>
-            </a>
+          <div className={styles.servicesGrid}>
+            <article className={styles.serviceItem}>
+              <h3>Marmitas</h3>
+              <p>O Paladar também oferece marmitas para o almoço.</p>
+              <Link className={styles.textLink} href={siteRoutes.lunchboxes}>
+                Conhecer marmitas
+              </Link>
+            </article>
+
+            <article className={styles.serviceItem}>
+              <h3>Festas e eventos</h3>
+              <p>
+                O Paladar Buffet é o serviço dedicado a festas e eventos.
+              </p>
+              <Link className={styles.textLink} href={siteRoutes.buffet}>
+                Conhecer o Paladar Buffet
+              </Link>
+            </article>
           </div>
         </div>
       </section>
@@ -262,67 +176,52 @@ export default function Home() {
         aria-labelledby="location-title"
       >
         <div className={`${styles.container} ${styles.locationGrid}`}>
-          <div>
-            <p className={styles.eyebrow}>Onde estamos</p>
+          <div className={styles.locationMedia}>
+            <Image
+              className={styles.mediaImage}
+              src="/images/site/restaurant-facade.webp"
+              alt="Fachada do Restaurante Paladar no Setor O"
+              width={1440}
+              height={810}
+              sizes="(min-width: 48rem) 50vw, 100vw"
+            />
+          </div>
+
+          <div className={styles.locationContent}>
+            <p className={styles.eyebrow}>Encontre o Paladar</p>
             <h2 id="location-title" className={styles.sectionTitle}>
               Almoço todos os dias em Ceilândia.
             </h2>
-          </div>
 
-          <div className={styles.locationDetails}>
-            <div>
-              <h3>Endereço</h3>
-              <address>
-                {siteContent.address.line1}
-                <br />
-                {siteContent.address.line2}
-              </address>
+            <div className={styles.locationFacts}>
+              <div>
+                <h3>Endereço</h3>
+                <address>
+                  {siteContent.address.line1}
+                  <br />
+                  {siteContent.address.line2}
+                </address>
+              </div>
+              <div>
+                <h3>Funcionamento</h3>
+                <p>{restaurantHours.days}</p>
+                <p>
+                  <time dateTime={restaurantHours.opensAt}>
+                    {restaurantHours.opensAtLabel}
+                  </time>{" "}
+                  às{" "}
+                  <time dateTime={restaurantHours.closesAt}>
+                    {restaurantHours.closesAtLabel}
+                  </time>
+                </p>
+              </div>
             </div>
-            <div>
-              <h3>Funcionamento</h3>
-              <p>{restaurantHours.days}</p>
-              <p>
-                <time dateTime={restaurantHours.opensAt}>
-                  {restaurantHours.opensAtLabel}
-                </time>{" "}
-                às{" "}
-                <time dateTime={restaurantHours.closesAt}>
-                  {restaurantHours.closesAtLabel}
-                </time>
-              </p>
-            </div>
+
             <Link
-              className={`${styles.button} ${styles.buttonSecondary}`}
+              className={`${styles.button} ${styles.buttonPrimary}`}
               href={siteRoutes.contact}
             >
-              Ver contato e localização
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.finalCta} aria-labelledby="final-cta-title">
-        <div className={`${styles.container} ${styles.finalCtaInner}`}>
-          <div>
-            <p className={`${styles.eyebrow} ${styles.eyebrowDark}`}>
-              Seu próximo almoço
-            </p>
-            <h2 id="final-cta-title" className={styles.sectionTitle}>
-              Conheça o que o Paladar prepara para você.
-            </h2>
-          </div>
-          <div className={styles.actions}>
-            <Link
-              className={`${styles.button} ${styles.buttonDark}`}
-              href={siteRoutes.menu}
-            >
-              Acessar cardápio
-            </Link>
-            <Link
-              className={`${styles.button} ${styles.buttonGhostDark}`}
-              href={siteRoutes.contact}
-            >
-              Como chegar
+              Ver localização
             </Link>
           </div>
         </div>

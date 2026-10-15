@@ -1,5 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
-import { navigationItems, siteContent, siteRoutes } from "@/data/site";
+import {
+  homeStartHref,
+  navigationItems,
+  siteContent,
+} from "@/data/site";
 import styles from "./Footer.module.css";
 
 export function Footer() {
@@ -9,21 +14,54 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <section
-            className={styles.brand}
-            aria-label={siteContent.brand.primaryName}
-          >
+          <div className={styles.brand}>
             <Link
-              className={styles.wordmark}
-              href={siteRoutes.home}
-              aria-label={`${siteContent.brand.primaryName} — página inicial`}
+              className={styles.brandLink}
+              href={homeStartHref}
+              aria-label={`${siteContent.brand.primaryName} — início da página`}
             >
-              {siteContent.brand.primaryName}
+              <Image
+                className={styles.logo}
+                src="/images/brand/paladar-logo-transparent.png"
+                alt=""
+                width={1480}
+                height={916}
+                sizes="136px"
+              />
             </Link>
-            <p className={styles.tagline}>{siteContent.tagline}</p>
+          </div>
+
+          <section
+            className={styles.details}
+            aria-labelledby="footer-location-title"
+          >
+            <h2 id="footer-location-title" className={styles.sectionTitle}>
+              Onde estamos
+            </h2>
+            <address className={styles.address}>
+              {siteContent.address.line1}
+              <br />
+              {siteContent.address.line2}
+            </address>
+            <div className={styles.schedule}>
+              <span className={styles.detailTitle}>Funcionamento</span>
+              <p>
+                {siteContent.restaurantHours.days},{" "}
+                <time dateTime={siteContent.restaurantHours.opensAt}>
+                  {siteContent.restaurantHours.opensAtLabel}
+                </time>{" "}
+                às{" "}
+                <time dateTime={siteContent.restaurantHours.closesAt}>
+                  {siteContent.restaurantHours.closesAtLabel}
+                </time>
+              </p>
+            </div>
           </section>
 
-          <nav aria-labelledby="footer-navigation-title">
+          <nav
+            className={styles.navigation}
+            aria-labelledby="footer-navigation-title"
+          >
             <h2 id="footer-navigation-title" className={styles.sectionTitle}>
               Navegação
             </h2>
@@ -38,100 +76,53 @@ export function Footer() {
             </ul>
           </nav>
 
-          <section aria-labelledby="footer-location-title">
-            <h2 id="footer-location-title" className={styles.sectionTitle}>
-              Onde estamos
-            </h2>
-            <address className={styles.address}>
-              {siteContent.address.line1}
-              <br />
-              {siteContent.address.line2}
-            </address>
-
-            <div className={styles.schedule}>
-              <h3 className={styles.detailTitle}>Funcionamento</h3>
-              <p>{siteContent.restaurantHours.days}</p>
-              <p>
-                <time dateTime={siteContent.restaurantHours.opensAt}>
-                  {siteContent.restaurantHours.opensAtLabel}
-                </time> às{" "}
-                <time dateTime={siteContent.restaurantHours.closesAt}>
-                  {siteContent.restaurantHours.closesAtLabel}
-                </time>
-              </p>
-            </div>
-          </section>
-
-          <section aria-labelledby="footer-contact-title">
+          <section
+            className={styles.contacts}
+            aria-labelledby="footer-contact-title"
+          >
             <h2 id="footer-contact-title" className={styles.sectionTitle}>
               Contato
             </h2>
             <ul className={styles.contactList}>
-              <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>WhatsApp geral</span>
+              <li>
                 <a
                   className={styles.contactLink}
                   href={siteContent.contacts.generalWhatsApp.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {siteContent.contacts.generalWhatsApp.display}
+                  <span className={styles.contactLabel}>WhatsApp</span>
+                  <span>{siteContent.contacts.generalWhatsApp.display}</span>
                   <span className={styles.visuallyHidden}>
                     {" "}
                     (abre em nova aba)
                   </span>
                 </a>
               </li>
-              <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>
-                  Marmitas e delivery
-                </span>
+              <li>
                 <a
                   className={styles.contactLink}
                   href={siteContent.contacts.lunchboxWhatsApp.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {siteContent.contacts.lunchboxWhatsApp.display}
+                  <span className={styles.contactLabel}>Marmitas</span>
+                  <span>{siteContent.contacts.lunchboxWhatsApp.display}</span>
                   <span className={styles.visuallyHidden}>
                     {" "}
                     (abre em nova aba)
                   </span>
                 </a>
               </li>
-              <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Instagram</span>
+              <li>
                 <a
                   className={styles.contactLink}
                   href={siteContent.contacts.instagram.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {siteContent.contacts.instagram.handle}
-                  <span className={styles.visuallyHidden}>
-                    {" "}
-                    (abre em nova aba)
-                  </span>
-                </a>
-              </li>
-              <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>E-mail</span>
-                <a
-                  className={styles.contactLink}
-                  href={siteContent.contacts.email.href}
-                >
-                  {siteContent.contacts.email.address}
-                </a>
-              </li>
-              <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Eventos</span>
-                <a
-                  className={styles.contactLink}
-                  href={siteContent.externalLinks.buffet.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {siteContent.externalLinks.buffet.label}
+                  <span className={styles.contactLabel}>Instagram</span>
+                  <span>{siteContent.contacts.instagram.handle}</span>
                   <span className={styles.visuallyHidden}>
                     {" "}
                     (abre em nova aba)
@@ -140,13 +131,13 @@ export function Footer() {
               </li>
             </ul>
           </section>
-        </div>
 
-        <div className={styles.copyright}>
-          <p>
-            © {currentYear} {siteContent.brand.primaryName}. Todos os direitos
-            reservados.
-          </p>
+          <div className={styles.copyright}>
+            <p>
+              © {currentYear} {siteContent.brand.primaryName}. Todos os direitos
+              reservados.
+            </p>
+          </div>
         </div>
       </div>
     </footer>
