@@ -32,13 +32,13 @@
 
 .heroGrid {
   display: grid;
-  gap: var(--space-xl);
-  padding-block: var(--section-block-space);
+  gap: var(--space-lg);
+  padding-block: clamp(var(--space-xl), 7vw, var(--space-3xl));
 }
 
 .heroContent {
   display: grid;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   max-width: 58rem;
 }
 
@@ -64,15 +64,15 @@
 .heroText {
   max-width: 41rem;
   color: var(--color-text-muted);
-  font-size: clamp(var(--font-size-lg), 1rem + 0.6vw, var(--font-size-2xl));
-  line-height: var(--line-height-snug);
+  font-size: clamp(var(--font-size-lg), 1rem + 0.4vw, var(--font-size-xl));
+  line-height: var(--line-height-relaxed);
 }
 
 .heroYear {
   align-self: end;
   color: var(--color-secondary);
   font-family: var(--font-family-heading);
-  font-size: clamp(4rem, 18vw, 7rem);
+  font-size: clamp(3rem, 12vw, 5rem);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.08em;
   line-height: 0.75;
@@ -91,7 +91,6 @@
 .originGrid,
 .journeyGrid,
 .evolutionGrid,
-.placeGrid,
 .finalCtaInner {
   display: grid;
   gap: var(--space-xl);
@@ -105,8 +104,7 @@
 }
 
 .originContent,
-.evolutionContent,
-.placeContent {
+.evolutionContent {
   display: grid;
   gap: var(--space-md);
   align-content: start;
@@ -123,6 +121,44 @@
 
 .originContent p:last-child {
   color: var(--color-text-muted);
+}
+
+.spaceGallery {
+  padding-block: var(--section-block-space);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-background);
+}
+
+.galleryIntroduction {
+  display: grid;
+  gap: var(--space-xs);
+  max-width: 43rem;
+}
+
+.galleryIntroduction > p:last-child {
+  color: var(--color-text-muted);
+}
+
+.galleryGrid {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
+}
+
+.galleryGrid figure {
+  min-height: 14rem;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.galleryGrid img {
+  width: 100%;
+  height: 100%;
+  min-height: 14rem;
+  object-fit: cover;
 }
 
 .journeySection {
@@ -150,7 +186,7 @@
 .milestonePeriod {
   color: var(--section-accent);
   font-family: var(--font-family-heading);
-  font-size: clamp(2.75rem, 10vw, 4.5rem);
+  font-size: clamp(2rem, 7vw, 3.25rem);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.065em;
   line-height: 0.85;
@@ -209,37 +245,6 @@
   background: var(--section-fg);
   content: "";
   flex: 0 0 auto;
-}
-
-.placeSection {
-  position: relative;
-  overflow: hidden;
-  background: var(--color-background);
-}
-
-.placeGrid {
-  min-height: 30rem;
-  align-items: end;
-}
-
-.placeContent {
-  position: relative;
-  z-index: 1;
-}
-
-.placeContent > p:last-child {
-  color: var(--color-text-muted);
-}
-
-.placeWord {
-  color: var(--color-border);
-  font-family: var(--font-family-heading);
-  font-size: clamp(4rem, 18vw, 11rem);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: -0.075em;
-  line-height: 0.75;
-  opacity: 0.65;
-  word-break: break-word;
 }
 
 .finalCta {
@@ -319,17 +324,18 @@
     gap: var(--space-2xl);
   }
 
-  .placeGrid {
-    min-height: 36rem;
+  .galleryGrid {
+    grid-template-columns: minmax(0, 1.4fr) minmax(15rem, 0.6fr);
+    grid-template-rows: repeat(2, minmax(12rem, 1fr));
   }
 
-  .placeContent {
-    align-self: center;
+  .galleryPrimary {
+    grid-row: 1 / 3;
   }
 
-  .placeWord {
-    align-self: end;
-    text-align: right;
+  .galleryGrid figure,
+  .galleryGrid img {
+    min-height: 100%;
   }
 
   .actions {
@@ -345,7 +351,7 @@
   }
 
   .heroYear {
-    font-size: clamp(4.5rem, 8vw, 6.5rem);
+    font-size: clamp(3.5rem, 5vw, 4.5rem);
     text-align: right;
   }
 
@@ -364,18 +370,8 @@
     top: 7rem;
   }
 
-  .placeGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-2xl);
-  }
-
-  .placeWord {
-    font-size: clamp(5rem, 9vw, 7rem);
-  }
-
   .originContent,
-  .evolutionContent,
-  .placeContent {
+  .evolutionContent {
     font-size: var(--font-size-xl);
   }
 }

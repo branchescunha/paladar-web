@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { restaurantContent } from "@/data/restaurant";
 import { siteContent, siteRoutes } from "@/data/site";
@@ -71,6 +72,54 @@ export default function AboutPage() {
               A história começou com {founderNames}, unindo gerações em torno
               do mesmo trabalho.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className={styles.spaceGallery}
+        aria-labelledby="space-gallery-title"
+      >
+        <div className={styles.container}>
+          <div className={styles.galleryIntroduction}>
+            <p className={styles.eyebrow}>O Paladar hoje</p>
+            <h2 id="space-gallery-title" className={styles.sectionTitle}>
+              O espaço onde essa história continua.
+            </h2>
+            <p>
+              Registros atuais da fachada, da entrada e do salão do restaurante
+              no Setor O.
+            </p>
+          </div>
+
+          <div className={styles.galleryGrid}>
+            <figure className={styles.galleryPrimary}>
+              <Image
+                src="/images/site/restaurant-facade.webp"
+                alt="Fachada atual do Restaurante Paladar"
+                width={960}
+                height={540}
+                sizes="(min-width: 768px) 64vw, 100vw"
+              />
+            </figure>
+            <figure>
+              <Image
+                src="/images/site/restaurant-entrance.webp"
+                alt="Entrada atual do Restaurante Paladar"
+                width={1280}
+                height={720}
+                sizes="(min-width: 768px) 32vw, 100vw"
+              />
+            </figure>
+            <figure>
+              <Image
+                src="/images/site/restaurant-interior.webp"
+                alt="Salão atual do Restaurante Paladar"
+                width={1280}
+                height={720}
+                sizes="(min-width: 768px) 32vw, 100vw"
+              />
+            </figure>
           </div>
         </div>
       </section>
@@ -182,27 +231,6 @@ export default function AboutPage() {
               ))}
             </ul>
           </div>
-        </div>
-      </section>
-
-      <section
-        className={`${styles.section} ${styles.placeSection}`}
-        aria-labelledby="place-title"
-      >
-        <div className={`${styles.container} ${styles.placeGrid}`}>
-          <div className={styles.placeContent}>
-            <p className={styles.eyebrow}>Nosso lugar</p>
-            <h2 id="place-title" className={styles.sectionTitle}>
-              Uma história vivida no Setor O.
-            </h2>
-            <p>
-              Foi em Ceilândia que o Paladar criou raízes, ampliou seu espaço e
-              se tornou {history.present.locationRole}.
-            </p>
-          </div>
-          <p className={styles.placeWord} aria-hidden="true">
-            Ceilândia
-          </p>
         </div>
       </section>
 

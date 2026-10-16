@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { siteContent, siteRoutes } from "@/data/site";
 import styles from "./page.module.css";
@@ -21,62 +22,68 @@ export default function BuffetPage() {
             <h1 id="buffet-page-title" className={styles.heroTitle}>
               O Paladar também faz parte das suas celebrações.
             </h1>
-            <p className={styles.heroText}>
-              A experiência do Paladar se estende a festas e eventos por meio
-              do Paladar Buffet.
-            </p>
-
-            <div className={styles.heroActions}>
-              <a
-                className={`${styles.button} ${styles.buttonPrimary}`}
-                href={buffet.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Conhecer o Paladar Buffet
-                <span className={styles.externalIcon} aria-hidden="true">
-                  ↗
-                </span>
-                <span className={styles.visuallyHidden}>
-                  {" "}(abre o site oficial em nova aba)
-                </span>
-              </a>
-              <p>Você será direcionado ao site oficial do Paladar Buffet.</p>
-            </div>
           </div>
 
-          <div className={styles.brandStage} aria-hidden="true">
-            <p className={styles.stageBrand}>{siteContent.brand.primaryName}</p>
-            <p className={styles.stageService}>Buffet</p>
-            <p className={styles.stageOccasion}>Festas &amp; Eventos</p>
+          <div className={styles.heroSummary}>
+            <p>
+              O Paladar Buffet é a frente dedicada a festas, celebrações e
+              eventos dentro do mesmo ecossistema do restaurante.
+            </p>
+            <a
+              className={`${styles.button} ${styles.buttonPrimary}`}
+              href={buffet.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Conhecer o Paladar Buffet
+              <span aria-hidden="true">↗</span>
+              <span className={styles.visuallyHidden}>
+                {" "}(abre o site oficial em nova aba)
+              </span>
+            </a>
+            <p className={styles.externalNote}>
+              Conteúdo completo disponível no site oficial externo.
+            </p>
           </div>
         </div>
       </header>
 
       <section
-        className={`${styles.section} ${styles.introductionSection}`}
-        aria-labelledby="introduction-title"
+        className={`${styles.section} ${styles.previewSection}`}
+        aria-labelledby="preview-title"
       >
-        <div className={`${styles.container} ${styles.editorialGrid}`}>
-          <div>
+        <div className={`${styles.container} ${styles.previewGrid}`}>
+          <div className={styles.previewContent}>
             <p className={`${styles.eyebrow} ${styles.eyebrowDark}`}>
-              {buffet.label}
+              Site oficial
             </p>
-            <h2 id="introduction-title" className={styles.sectionTitle}>
-              Uma frente dedicada a celebrar encontros.
+            <h2 id="preview-title" className={styles.sectionTitle}>
+              Conheça a experiência completa do Buffet.
             </h2>
+            <p>
+              Informações sobre o serviço e o atendimento estão reunidas no
+              canal próprio do Paladar Buffet.
+            </p>
           </div>
 
-          <div className={styles.sectionCopy}>
-            <p>
-              O Paladar Buffet é o serviço do ecossistema Paladar voltado a
-              festas, celebrações e eventos.
-            </p>
-            <p>
-              As informações completas sobre o Buffet estão reunidas em seu
-              próprio site oficial.
-            </p>
-          </div>
+          <a
+            className={styles.sitePreview}
+            href={buffet.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir o site oficial do Paladar Buffet em nova aba"
+          >
+            <Image
+              src="/images/site/paladar-buffet-site-preview.webp"
+              alt="Prévia da página inicial do site oficial Paladar Buffet"
+              width={1440}
+              height={900}
+              sizes="(min-width: 768px) 64vw, 100vw"
+            />
+            <span>
+              Visitar site oficial <span aria-hidden="true">↗</span>
+            </span>
+          </a>
         </div>
       </section>
 
@@ -85,101 +92,36 @@ export default function BuffetPage() {
         aria-labelledby="connection-title"
         data-surface="dark"
       >
-        <div className={styles.container}>
+        <div className={`${styles.container} ${styles.connectionGrid}`}>
           <div className={styles.connectionIntroduction}>
             <p className={styles.eyebrow}>Uma mesma essência</p>
             <h2 id="connection-title" className={styles.sectionTitle}>
-              Do restaurante para novos momentos à mesa.
+              Do restaurante para novos encontros.
             </h2>
             <p>
-              O Restaurante Paladar e o Paladar Buffet compartilham uma relação
-              construída em torno de encontros e gastronomia.
+              As duas marcas compartilham uma história familiar construída em
+              torno de gastronomia, cuidado e experiência.
             </p>
           </div>
 
           <ul className={styles.valueList}>
             <li>
-              <span aria-hidden="true">01</span>
-              <h3>Tradição</h3>
-              <p>Uma história familiar que conecta as duas marcas.</p>
+              <span>01</span>
+              <p>Tradição</p>
             </li>
             <li>
-              <span aria-hidden="true">02</span>
-              <h3>Gastronomia</h3>
-              <p>A comida como parte central de diferentes encontros.</p>
+              <span>02</span>
+              <p>Gastronomia</p>
             </li>
             <li>
-              <span aria-hidden="true">03</span>
-              <h3>Cuidado</h3>
-              <p>Uma experiência pensada para momentos de celebração.</p>
+              <span>03</span>
+              <p>Cuidado</p>
             </li>
           </ul>
-        </div>
-      </section>
 
-      <section
-        className={`${styles.section} ${styles.mediaSection}`}
-        aria-labelledby="media-title"
-        data-surface="red"
-      >
-        <div className={`${styles.container} ${styles.mediaGrid}`}>
-          <div className={styles.mediaComposition} aria-hidden="true">
-            <p>Festas</p>
-            <span>&amp;</span>
-            <p>Eventos</p>
-          </div>
-
-          <div className={styles.mediaContent}>
-            <p className={`${styles.eyebrow} ${styles.eyebrowDark}`}>
-              Paladar em outros encontros
-            </p>
-            <h2 id="media-title" className={styles.sectionTitle}>
-              Uma conexão que vai além do restaurante.
-            </h2>
-            <p>
-              Para conhecer o Paladar Buffet com mais detalhes, continue para
-              o canal dedicado a festas e eventos.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.finalCta} aria-labelledby="official-site-title">
-        <div className={`${styles.container} ${styles.finalCtaInner}`}>
-          <div>
-            <p className={`${styles.eyebrow} ${styles.eyebrowDark}`}>
-              Site oficial
-            </p>
-            <h2 id="official-site-title">
-              Conheça o Paladar Buffet por completo.
-            </h2>
-            <p>
-              Acesse o site externo para consultar as informações do Buffet.
-            </p>
-          </div>
-
-          <div className={styles.finalActions}>
-            <a
-              className={`${styles.button} ${styles.buttonDark}`}
-              href={buffet.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Conhecer o Paladar Buffet
-              <span className={styles.externalIcon} aria-hidden="true">
-                ↗
-              </span>
-              <span className={styles.visuallyHidden}>
-                {" "}(abre o site oficial em nova aba)
-              </span>
-            </a>
-            <Link
-              className={`${styles.button} ${styles.buttonGhost}`}
-              href={siteRoutes.home}
-            >
-              Voltar ao Restaurante
-            </Link>
-          </div>
+          <Link className={styles.returnLink} href={siteRoutes.home}>
+            Voltar ao Restaurante
+          </Link>
         </div>
       </section>
     </main>

@@ -13,34 +13,19 @@
 }
 
 .hero {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
   background: var(--color-background);
-}
-
-.hero::after {
-  position: absolute;
-  right: clamp(1rem, 7vw, 7rem);
-  bottom: -3rem;
-  z-index: -1;
-  width: clamp(6rem, 16vw, 13rem);
-  height: clamp(6rem, 16vw, 13rem);
-  border: clamp(1rem, 3vw, 2rem) solid var(--color-secondary);
-  content: "";
-  opacity: 0.35;
 }
 
 .heroGrid {
   display: grid;
   gap: var(--space-xl);
   align-items: end;
-  padding-block: var(--section-block-space);
+  padding-block: clamp(var(--space-xl), 6vw, var(--space-2xl));
 }
 
 .heroContent {
   display: grid;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   max-width: 51rem;
 }
 
@@ -66,8 +51,8 @@
 .heroText {
   max-width: 41rem;
   color: var(--color-text-muted);
-  font-size: clamp(var(--font-size-lg), 1rem + 0.6vw, var(--font-size-2xl));
-  line-height: var(--line-height-snug);
+  font-size: clamp(var(--font-size-lg), 1rem + 0.4vw, var(--font-size-xl));
+  line-height: var(--line-height-relaxed);
 }
 
 .actions {
@@ -168,6 +153,7 @@
 }
 
 .lightSection {
+  padding-block: clamp(var(--space-xl), 5vw, var(--space-2xl));
   color: var(--color-text-dark);
   background: var(--color-surface-light);
 }
@@ -180,8 +166,7 @@
 
 .sectionIntroduction h2,
 .houseIntroduction h2,
-.deliveryGrid h2,
-.finalCta h2 {
+.deliveryGrid h2 {
   max-width: 16ch;
   font-size: var(--font-size-section-title);
   letter-spacing: -0.045em;
@@ -190,7 +175,7 @@
 .formatList {
   display: grid;
   gap: var(--space-lg);
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-xl);
   border-top: 1px solid var(--color-border-light);
 }
 
@@ -204,7 +189,7 @@
 .formatNumber {
   color: var(--color-secondary-on-light);
   font-family: var(--font-family-heading);
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
 }
 
@@ -215,7 +200,7 @@
 .formatList article > p:last-child {
   max-width: 34rem;
   color: var(--color-text-muted);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-base);
 }
 
 .houseSection {
@@ -235,7 +220,7 @@
 .lunchboxGrid {
   display: grid;
   gap: var(--space-md);
-  margin: var(--space-2xl) 0 0;
+  margin: var(--space-xl) 0 0;
   padding: 0;
   list-style: none;
 }
@@ -248,8 +233,8 @@
   display: grid;
   min-height: 100%;
   grid-template-rows: auto auto 1fr auto;
-  gap: var(--space-md);
-  padding: var(--space-lg);
+  gap: var(--space-sm);
+  padding: var(--space-md);
   border: 1px solid var(--section-border);
   color: var(--section-fg);
   background: var(--section-surface);
@@ -265,7 +250,7 @@
 .cardHeading > span {
   color: var(--section-accent);
   font-family: var(--font-family-heading);
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   line-height: 1;
 }
@@ -294,8 +279,8 @@
 
 .cardFooter {
   display: grid;
-  gap: var(--space-md);
-  padding-top: var(--space-md);
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
   border-top: 1px solid var(--section-border);
 }
 
@@ -318,7 +303,7 @@
 .cardFooter strong {
   color: var(--section-accent);
   font-family: var(--font-family-heading);
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-xl);
 }
 
 .orderLink {
@@ -411,60 +396,34 @@
   text-transform: uppercase;
 }
 
-.processSection {
-  background: var(--color-background);
-}
-
-.processList {
+.orderGuide {
   display: grid;
-  margin: var(--space-2xl) 0 0;
+  gap: 0;
+  margin: 0;
   padding: 0;
   border-top: 1px solid var(--color-border);
   list-style: none;
 }
 
-.processList li {
+.orderGuide li {
   display: grid;
-  gap: var(--space-xs);
-  padding-block: var(--space-lg);
-  border-bottom: 1px solid var(--color-border);
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-sm);
+  align-items: baseline;
+  padding-block: var(--space-xs);
+  border-bottom: 1px solid var(--section-border);
 }
 
-.processList span {
-  color: var(--color-brand);
+.orderGuide span {
+  color: var(--section-accent);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.1em;
 }
 
-.processList h3 {
-  font-size: var(--font-size-2xl);
-}
-
-.processList p {
-  max-width: 29rem;
-  color: var(--color-text-muted);
-}
-
-.finalCta {
-  padding-block: var(--space-2xl);
-  color: var(--color-text-dark);
-  background: var(--color-surface-muted);
-}
-
-.finalCtaInner {
-  display: grid;
-  gap: var(--space-xl);
-  align-items: center;
-}
-
-.finalCtaInner > div {
-  display: grid;
-  gap: var(--space-sm);
-}
-
-.finalCta h2 {
-  font-size: var(--font-size-section-title);
+.orderGuide p {
+  color: var(--section-muted);
+  font-size: var(--font-size-sm);
 }
 
 .visuallyHidden {
@@ -486,8 +445,7 @@
   }
 
   .formatList,
-  .deliveryGrid,
-  .finalCtaInner {
+  .deliveryGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -513,32 +471,8 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .deliveryGrid,
-  .finalCtaInner {
+  .deliveryGrid {
     gap: var(--space-2xl);
-  }
-
-  .processList {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .processList li {
-    padding-inline: var(--space-md);
-    border-right: 1px solid var(--color-border);
-  }
-
-  .processList li:first-child {
-    padding-left: 0;
-  }
-
-  .processList li:last-child {
-    padding-right: 0;
-    border-right: 0;
-  }
-
-  .finalCtaInner .button {
-    width: fit-content;
-    justify-self: end;
   }
 }
 
@@ -548,11 +482,12 @@
   }
 
   .lunchboxGrid {
-    gap: var(--space-lg);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-sm);
   }
 
   .lunchboxCard {
-    padding: var(--space-xl);
+    padding: var(--space-md);
   }
 }
 
