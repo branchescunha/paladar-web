@@ -229,6 +229,21 @@ export default function LunchboxesPage() {
               </div>
             </dl>
 
+            <ol className={styles.orderGuide} aria-label="Como fazer o pedido">
+              <li>
+                <span>01</span>
+                <p>Escolha entre montar no peso ou pedir uma opção da casa.</p>
+              </li>
+              <li>
+                <span>02</span>
+                <p>Envie sua escolha para o WhatsApp de marmitas.</p>
+              </li>
+              <li>
+                <span>03</span>
+                <p>Confirme os detalhes diretamente com a equipe.</p>
+              </li>
+            </ol>
+
             <a
               className={`${styles.button} ${styles.buttonDark}`}
               href={siteLinks.whatsApp.lunchboxes.general}
@@ -241,58 +256,6 @@ export default function LunchboxesPage() {
               </span>
             </a>
           </div>
-        </div>
-      </section>
-
-      <section
-        className={`${styles.section} ${styles.processSection}`}
-        aria-labelledby="process-title"
-      >
-        <div className={styles.container}>
-          <div className={styles.sectionIntroduction}>
-            <p className={styles.eyebrow}>Como pedir</p>
-            <h2 id="process-title">Um caminho simples até o almoço.</h2>
-          </div>
-
-          <ol className={styles.processList}>
-            <li>
-              <span>01</span>
-              <h3>Escolha a marmita</h3>
-              <p>Monte no peso ou selecione uma opção da casa.</p>
-            </li>
-            <li>
-              <span>02</span>
-              <h3>Fale pelo WhatsApp</h3>
-              <p>Envie sua escolha para o número específico de marmitas.</p>
-            </li>
-            <li>
-              <span>03</span>
-              <h3>Combine o pedido</h3>
-              <p>Confirme os detalhes diretamente com a equipe do Paladar.</p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <section className={styles.finalCta} aria-labelledby="final-cta-title">
-        <div className={`${styles.container} ${styles.finalCtaInner}`}>
-          <div>
-            <p className={`${styles.eyebrow} ${styles.eyebrowDark}`}>
-              Almoço com praticidade
-            </p>
-            <h2 id="final-cta-title">Escolha sua marmita e fale com a gente.</h2>
-          </div>
-          <a
-            className={`${styles.button} ${styles.buttonDark}`}
-            href={siteLinks.whatsApp.lunchboxes.general}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Pedir pelo WhatsApp
-            <span className={styles.visuallyHidden}>
-              {" "}(abre o WhatsApp em nova aba)
-            </span>
-          </a>
         </div>
       </section>
     </main>

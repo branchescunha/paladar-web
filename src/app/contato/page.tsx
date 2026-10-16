@@ -44,51 +44,39 @@ export default function ContactPage() {
               Seu almoço no Paladar começa por aqui.
             </h1>
             <p className={styles.heroText}>
-              Encontre nosso endereço, escolha o contato certo e confira as
-              informações para planejar sua visita.
+              Endereço, horários e canais oficiais para planejar sua visita ou
+              falar com a equipe.
             </p>
+          </div>
 
-            <div className={styles.actions}>
-              <a
-                className={`${styles.button} ${styles.buttonPrimary}`}
-                href={mapsHref}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Abrir no Google Maps
-                <span aria-hidden="true">↗</span>
-                <span className={styles.visuallyHidden}>
-                  {" "}(abre em nova aba)
-                </span>
-              </a>
-              <a
-                className={`${styles.button} ${styles.buttonOutline}`}
-                href={generalWhatsAppHref}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Falar com o Paladar
-                <span className={styles.visuallyHidden}>
-                  {" "}(abre o WhatsApp em nova aba)
-                </span>
-              </a>
+          <dl className={styles.schedulePanel}>
+            <div>
+              <dt>Restaurante</dt>
+              <dd>{restaurantHours.days}</dd>
+              <dd>
+                <time dateTime={restaurantHours.opensAt}>
+                  {restaurantHours.opensAtLabel}
+                </time>{" "}
+                às{" "}
+                <time dateTime={restaurantHours.closesAt}>
+                  {restaurantHours.closesAtLabel}
+                </time>
+              </dd>
+              <dd>{service.mealService}</dd>
             </div>
-          </div>
-
-          <div className={styles.schedulePanel}>
-            <p className={styles.scheduleLabel}>Funcionamento</p>
-            <p className={styles.scheduleDays}>{restaurantHours.days}</p>
-            <p className={styles.scheduleTime}>
-              <time dateTime={restaurantHours.opensAt}>
-                {restaurantHours.opensAtLabel}
-              </time>
-              <span>às</span>
-              <time dateTime={restaurantHours.closesAt}>
-                {restaurantHours.closesAtLabel}
-              </time>
-            </p>
-            <p className={styles.scheduleNote}>{service.mealService}</p>
-          </div>
+            <div>
+              <dt>Delivery</dt>
+              <dd>
+                <time dateTime={delivery.hours.opensAt}>
+                  {delivery.hours.opensAtLabel}
+                </time>{" "}
+                às{" "}
+                <time dateTime={delivery.hours.closesAt}>
+                  {delivery.hours.closesAtLabel}
+                </time>
+              </dd>
+            </div>
+          </dl>
         </div>
       </header>
 
@@ -102,187 +90,103 @@ export default function ContactPage() {
               Informações principais
             </p>
             <h2 id="information-title" className={styles.sectionTitle}>
-              Tudo o que você precisa antes de chegar.
+              Escolha o caminho certo.
             </h2>
           </div>
 
-          <dl className={styles.informationList}>
-            <div className={styles.informationItem}>
-              <dt>Endereço</dt>
-              <dd>
-                <address>
-                  {address.line1}
-                  <br />
-                  {address.line2}
-                </address>
-              </dd>
-            </div>
-            <div className={styles.informationItem}>
-              <dt>Restaurante</dt>
-              <dd>
-                <p>{restaurantHours.days}</p>
-                <p>
-                  <time dateTime={restaurantHours.opensAt}>
-                    {restaurantHours.opensAtLabel}
-                  </time>{" "}
-                  às{" "}
-                  <time dateTime={restaurantHours.closesAt}>
-                    {restaurantHours.closesAtLabel}
-                  </time>
-                </p>
-                <p>{service.mealService}</p>
-              </dd>
-            </div>
-            <div className={styles.informationItem}>
-              <dt>Delivery</dt>
-              <dd>
-                <p>
-                  <time dateTime={delivery.hours.opensAt}>
-                    {delivery.hours.opensAtLabel}
-                  </time>{" "}
-                  às{" "}
-                  <time dateTime={delivery.hours.closesAt}>
-                    {delivery.hours.closesAtLabel}
-                  </time>
-                </p>
-              </dd>
-            </div>
-            <div className={styles.informationItem}>
-              <dt>Contato geral</dt>
-              <dd>
-                <a href={generalWhatsAppHref} target="_blank" rel="noopener noreferrer">
-                  {contacts.generalWhatsApp.display}
-                  <span className={styles.visuallyHidden}>
-                    {" "}(abre o WhatsApp em nova aba)
-                  </span>
-                </a>
-              </dd>
-            </div>
-            <div className={styles.informationItem}>
-              <dt>Marmitas e delivery</dt>
-              <dd>
-                <a href={lunchboxWhatsAppHref} target="_blank" rel="noopener noreferrer">
-                  {contacts.lunchboxWhatsApp.display}
-                  <span className={styles.visuallyHidden}>
-                    {" "}(abre o WhatsApp em nova aba)
-                  </span>
-                </a>
-              </dd>
-            </div>
-            <div className={styles.informationItem}>
-              <dt>Redes e e-mail</dt>
-              <dd className={styles.contactLinks}>
-                <a
-                  href={contacts.instagram.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {contacts.instagram.handle}
-                  <span className={styles.visuallyHidden}>
-                    {" "}(abre o Instagram em nova aba)
-                  </span>
-                </a>
-                <a href={contacts.email.href}>{contacts.email.address}</a>
-              </dd>
-            </div>
-          </dl>
-        </div>
-      </section>
-
-      <section
-        className={`${styles.section} ${styles.locationSection}`}
-        aria-labelledby="location-title"
-        data-surface="dark"
-      >
-        <div className={`${styles.container} ${styles.locationGrid}`}>
-          <div className={styles.locationContent}>
-            <p className={styles.eyebrow}>Onde estamos</p>
-            <h2 id="location-title" className={styles.sectionTitle}>
-              Paladar no coração de Ceilândia.
-            </h2>
-            <address>
-              {address.line1}
-              <br />
-              {address.line2}
-            </address>
-            <a
-              className={`${styles.button} ${styles.buttonPrimary}`}
-              href={mapsHref}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Abrir no Google Maps
-              <span aria-hidden="true">↗</span>
-              <span className={styles.visuallyHidden}>
-                {" "}(abre em nova aba)
-              </span>
-            </a>
-            <p className={styles.externalNote}>
-              O endereço será aberto no site externo do Google Maps.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section
-        className={`${styles.section} ${styles.contactSection}`}
-        aria-labelledby="contact-title"
-      >
-        <div className={styles.container}>
-          <div className={styles.sectionIntroduction}>
-            <p className={`${styles.eyebrow} ${styles.eyebrowDark}`}>
-              Fale com o Paladar
-            </p>
-            <h2 id="contact-title" className={styles.sectionTitle}>
-              Um contato para cada necessidade.
-            </h2>
-          </div>
-
-          <div className={styles.contactOptions}>
-            <article>
-              <p className={styles.optionNumber} aria-hidden="true">
-                01
-              </p>
-              <h3>Contato geral</h3>
-              <p>
-                Para falar diretamente com o restaurante sobre informações
-                gerais.
-              </p>
+          <div className={styles.informationGrid}>
+            <article className={styles.locationCard}>
+              <p className={styles.cardLabel}>Onde estamos</p>
+              <h3>Paladar em Ceilândia</h3>
+              <address>
+                {address.line1}
+                <br />
+                {address.line2}
+              </address>
               <a
-                className={styles.textLink}
-                href={generalWhatsAppHref}
+                className={`${styles.button} ${styles.buttonPrimary}`}
+                href={mapsHref}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {contacts.generalWhatsApp.display}
+                Abrir no Google Maps
                 <span aria-hidden="true">↗</span>
                 <span className={styles.visuallyHidden}>
-                  {" "}(abre o WhatsApp em nova aba)
+                  {" "}(abre em nova aba)
                 </span>
               </a>
             </article>
 
-            <article>
-              <p className={styles.optionNumber} aria-hidden="true">
-                02
-              </p>
-              <h3>Marmitas e delivery</h3>
-              <p>
-                Para fazer seu pedido durante o horário de delivery do
-                Paladar.
-              </p>
-              <a
-                className={styles.textLink}
-                href={lunchboxWhatsAppHref}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {contacts.lunchboxWhatsApp.display}
-                <span aria-hidden="true">↗</span>
-                <span className={styles.visuallyHidden}>
-                  {" "}(abre o WhatsApp em nova aba)
-                </span>
-              </a>
+            <article className={styles.serviceCard}>
+              <p className={styles.cardLabel}>Atendimento</p>
+              <h3>Almoço e delivery</h3>
+              <dl>
+                <div>
+                  <dt>Restaurante</dt>
+                  <dd>
+                    {restaurantHours.days}, {restaurantHours.opensAtLabel} às{" "}
+                    {restaurantHours.closesAtLabel}
+                  </dd>
+                </div>
+                <div>
+                  <dt>Delivery</dt>
+                  <dd>
+                    {delivery.hours.opensAtLabel} às {delivery.hours.closesAtLabel}
+                  </dd>
+                </div>
+              </dl>
+            </article>
+
+            <article className={styles.contactsCard}>
+              <p className={styles.cardLabel}>Canais oficiais</p>
+              <h3>Fale com o Paladar</h3>
+              <ul className={styles.contactActions}>
+                <li>
+                  <a
+                    href={generalWhatsAppHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>WhatsApp geral</span>
+                    <strong>{contacts.generalWhatsApp.display}</strong>
+                    <span className={styles.visuallyHidden}>
+                      {" "}(abre em nova aba)
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={lunchboxWhatsAppHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>Marmitas e delivery</span>
+                    <strong>{contacts.lunchboxWhatsApp.display}</strong>
+                    <span className={styles.visuallyHidden}>
+                      {" "}(abre em nova aba)
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={contacts.instagram.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>Instagram</span>
+                    <strong>{contacts.instagram.handle}</strong>
+                    <span className={styles.visuallyHidden}>
+                      {" "}(abre em nova aba)
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href={contacts.email.href}>
+                    <span>E-mail</span>
+                    <strong>{contacts.email.address}</strong>
+                  </a>
+                </li>
+              </ul>
             </article>
           </div>
         </div>
@@ -293,7 +197,7 @@ export default function ContactPage() {
         aria-labelledby="benefits-title"
         data-surface="red"
       >
-        <div className={styles.container}>
+        <div className={`${styles.container} ${styles.benefitsGrid}`}>
           <div className={styles.benefitsIntroduction}>
             <p className={styles.eyebrow}>Benefícios</p>
             <h2 id="benefits-title" className={styles.sectionTitle}>
@@ -381,8 +285,9 @@ export default function ContactPage() {
             <details>
               <summary>Como funciona o benefício para aniversariantes?</summary>
               <p>
-                O aniversariante do dia recebe {benefits.birthday.discountPercentage}%
-                de desconto {benefits.birthday.appliesTo}.
+                O aniversariante do dia recebe{" "}
+                {benefits.birthday.discountPercentage}% de desconto{" "}
+                {benefits.birthday.appliesTo}.
               </p>
             </details>
             <details>
@@ -411,39 +316,6 @@ export default function ContactPage() {
                 .
               </p>
             </details>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.finalCta} aria-labelledby="final-cta-title">
-        <div className={`${styles.container} ${styles.finalCtaInner}`}>
-          <div>
-            <p className={styles.eyebrow}>Seu próximo almoço</p>
-            <h2 id="final-cta-title">Escolha o caminho e venha ao Paladar.</h2>
-          </div>
-          <div className={styles.actions}>
-            <a
-              className={`${styles.button} ${styles.buttonPrimary}`}
-              href={mapsHref}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Como chegar
-              <span className={styles.visuallyHidden}>
-                {" "}(abre o Google Maps em nova aba)
-              </span>
-            </a>
-            <a
-              className={`${styles.button} ${styles.buttonOutline}`}
-              href={generalWhatsAppHref}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp
-              <span className={styles.visuallyHidden}>
-                {" "}(abre o WhatsApp em nova aba)
-              </span>
-            </a>
           </div>
         </div>
       </section>

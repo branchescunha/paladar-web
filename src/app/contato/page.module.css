@@ -3,47 +3,45 @@
   min-height: 100vh;
   padding: 0;
   overflow-x: clip;
+  background: var(--color-background);
   text-align: left;
 }
 
 .container {
-  width: min(100%, var(--container-xl));
+  width: min(100%, var(--container-lg));
   margin-inline: auto;
   padding-inline: var(--container-gutter);
 }
 
 .hero {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
   background: var(--color-background);
 }
 
-.hero::before {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: -1;
-  width: clamp(5rem, 18vw, 15rem);
-  height: 0.375rem;
-  background: var(--color-brand);
-  content: "";
+.heroGrid,
+.heroContent,
+.sectionIntroduction,
+.benefitsGrid,
+.benefitsIntroduction,
+.faqGrid,
+.faqIntroduction {
+  display: grid;
 }
 
 .heroGrid {
-  display: grid;
   gap: var(--space-xl);
-  align-items: center;
-  padding-block: var(--section-block-space);
+  align-items: end;
+  padding-block: clamp(var(--space-xl), 6vw, var(--space-2xl));
 }
 
-.heroContent {
-  display: grid;
-  gap: var(--space-md);
-  max-width: 52rem;
+.heroContent,
+.sectionIntroduction,
+.benefitsIntroduction,
+.faqIntroduction {
+  gap: var(--space-sm);
 }
 
-.eyebrow {
+.eyebrow,
+.cardLabel {
   color: var(--color-brand);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
@@ -52,36 +50,116 @@
   text-transform: uppercase;
 }
 
-.eyebrowDark {
+.eyebrowDark,
+.cardLabel {
   color: var(--color-brand-on-light);
 }
 
 .heroTitle {
-  max-width: 12ch;
+  max-width: 13ch;
   font-size: var(--font-size-page-title);
   letter-spacing: -0.055em;
 }
 
 .heroText {
-  max-width: 41rem;
+  max-width: 39rem;
   color: var(--color-text-muted);
-  font-size: clamp(var(--font-size-lg), 1rem + 0.6vw, var(--font-size-2xl));
-  line-height: var(--line-height-snug);
+  font-size: clamp(var(--font-size-lg), 1rem + 0.4vw, var(--font-size-xl));
+  line-height: var(--line-height-relaxed);
 }
 
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
-  align-items: center;
+.schedulePanel {
+  display: grid;
+  gap: var(--space-md);
+  margin: 0;
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.schedulePanel > div {
+  display: grid;
+  gap: var(--space-3xs);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.schedulePanel > div:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.schedulePanel dt {
+  color: var(--color-brand);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.schedulePanel dd {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.schedulePanel dd:first-of-type {
+  color: var(--color-text);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.section {
+  padding-block: var(--section-block-space);
+}
+
+.informationSection {
+  padding-block: clamp(var(--space-xl), 5vw, var(--space-2xl));
+  color: var(--color-text-dark);
+  background: var(--color-surface-light);
+}
+
+.sectionTitle {
+  max-width: 17ch;
+  font-size: var(--font-size-section-title);
+  letter-spacing: -0.045em;
+}
+
+.informationGrid {
+  display: grid;
+  margin-top: var(--space-xl);
+  border-block: 1px solid var(--color-border-light);
+}
+
+.informationGrid article {
+  display: grid;
+  gap: var(--space-sm);
+  align-content: start;
+  padding-block: var(--space-lg);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.informationGrid article:last-child {
+  border-bottom: 0;
+}
+
+.informationGrid h3 {
+  font-size: var(--font-size-feature-title);
+}
+
+.locationCard address {
+  color: var(--color-text-muted);
+  font-style: normal;
 }
 
 .button {
   display: inline-flex;
+  width: fit-content;
   min-height: 3rem;
+  gap: var(--space-2xs);
   align-items: center;
   justify-content: center;
-  gap: var(--space-2xs);
+  margin-top: var(--space-xs);
   padding: var(--space-xs) var(--space-md);
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
@@ -92,13 +170,12 @@
   text-decoration: none;
   transition:
     background-color var(--duration-fast) var(--ease-standard),
-    border-color var(--duration-fast) var(--ease-standard),
     color var(--duration-fast) var(--ease-standard);
 }
 
 .buttonPrimary {
   color: var(--color-text-inverse);
-  background: var(--color-brand);
+  background: var(--color-brand-on-light);
 }
 
 .buttonPrimary:hover {
@@ -106,385 +183,164 @@
   background: var(--color-brand-hover);
 }
 
-.buttonOutline {
-  border-color: var(--color-border-dark);
-  color: var(--color-text);
-  background: transparent;
-}
-
-.buttonOutline:hover {
-  border-color: var(--color-text);
-  color: var(--color-background);
-  background: var(--color-text);
-}
-
-.schedulePanel {
-  position: relative;
+.serviceCard dl {
   display: grid;
-  gap: var(--space-xs);
-  align-content: center;
-  min-height: 18rem;
-  padding: var(--space-lg);
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  gap: var(--space-sm);
+  margin: 0;
 }
 
-.schedulePanel::after {
-  position: absolute;
-  right: -2.5rem;
-  bottom: -2.5rem;
-  width: 8rem;
-  height: 8rem;
-  border: 1.25rem solid var(--color-secondary);
-  border-radius: 50%;
-  content: "";
-  opacity: 0.75;
+.serviceCard dl > div {
+  display: grid;
+  gap: var(--space-3xs);
 }
 
-.scheduleLabel,
-.scheduleNote {
-  position: relative;
-  z-index: 1;
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.scheduleLabel {
-  color: var(--color-accent);
-}
-
-.scheduleDays {
-  position: relative;
-  z-index: 1;
-  font-family: var(--font-family-heading);
-  font-size: clamp(2.25rem, 7vw, 3.5rem);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: -0.05em;
-  line-height: var(--line-height-tight);
-}
-
-.scheduleTime {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
-  align-items: baseline;
-  color: var(--color-brand);
-  font-family: var(--font-family-heading);
-  font-size: clamp(1.75rem, 6vw, 2.75rem);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: -0.04em;
-}
-
-.scheduleTime span {
+.serviceCard dt {
   color: var(--color-text-muted);
-  font-family: var(--font-family-body);
   font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.scheduleNote {
-  color: var(--color-text-muted);
-}
-
-.section {
-  padding-block: var(--section-block-space);
-}
-
-.informationSection,
-.contactSection,
-.faqSection {
+.serviceCard dd {
+  margin: 0;
   color: var(--color-text-dark);
-  background: var(--color-surface-light);
 }
 
-.sectionIntroduction {
+.contactActions {
   display: grid;
-  gap: var(--space-sm);
-  max-width: 55rem;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-border-light);
+  list-style: none;
 }
 
-.sectionTitle {
-  max-width: 16ch;
-  font-size: var(--font-size-section-title);
-  letter-spacing: -0.045em;
-}
-
-.informationList {
+.contactActions a {
   display: grid;
-  margin: var(--space-2xl) 0 0;
-  border-top: 1px solid var(--color-border-dark);
+  gap: var(--space-3xs);
+  min-height: 3.5rem;
+  justify-content: start;
+  padding-block: var(--space-xs);
+  border-bottom: 1px solid var(--color-border-light);
+  color: var(--color-text-dark);
+  text-decoration: none;
 }
 
-.informationItem {
-  display: grid;
-  gap: var(--space-sm);
-  padding-block: var(--space-lg);
-  border-bottom: 1px solid var(--color-border-dark);
-}
-
-.informationItem dt {
+.contactActions a > span:first-child {
   color: var(--color-text-muted);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.informationItem dd {
-  display: grid;
-  gap: var(--space-3xs);
-  min-width: 0;
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
-}
-
-.informationItem address {
-  font-style: normal;
-}
-
-.informationItem a,
-.faqList a {
-  color: var(--color-brand-on-light);
+.contactActions strong {
   overflow-wrap: anywhere;
-  text-decoration-color: currentColor;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
+  font-size: var(--font-size-sm);
 }
 
-.informationItem a {
-  display: inline-flex;
-  min-height: 2.75rem;
-  align-items: center;
-  justify-self: start;
-}
-
-.informationItem a:hover,
-.faqList a:hover {
-  color: var(--color-secondary-on-light);
-}
-
-.contactLinks {
-  justify-items: start;
-}
-
-.locationSection {
-  color: var(--section-fg);
-}
-
-.locationGrid {
-  display: grid;
-  align-items: center;
-}
-
-.locationContent {
-  display: grid;
-  gap: var(--space-md);
-  justify-items: start;
-}
-
-.locationContent address {
-  max-width: 34rem;
-  color: var(--section-muted);
-  font-size: var(--font-size-lg);
-  font-style: normal;
-}
-
-.externalNote {
-  color: var(--section-muted);
-  font-size: var(--font-size-xs);
-}
-
-.contactOptions {
-  display: grid;
-  margin-top: var(--space-2xl);
-  border-top: 1px solid var(--color-border-dark);
-}
-
-.contactOptions article {
-  display: grid;
-  gap: var(--space-sm);
-  align-content: start;
-  padding-block: var(--space-xl);
-  border-bottom: 1px solid var(--color-border-dark);
-}
-
-.optionNumber {
+.contactActions a:hover strong {
   color: var(--color-brand-on-light);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: 0.1em;
-}
-
-.contactOptions h3 {
-  font-size: var(--font-size-feature-title);
-}
-
-.contactOptions article > p:not(.optionNumber) {
-  max-width: 31rem;
-  color: var(--color-text-muted);
-}
-
-.textLink {
-  display: inline-flex;
-  min-height: 2.75rem;
-  align-items: center;
-  justify-self: start;
-  gap: var(--space-2xs);
-  color: var(--color-brand-on-light);
-  font-weight: var(--font-weight-bold);
-  text-underline-offset: 0.25em;
-}
-
-.textLink:hover {
-  color: var(--color-secondary-on-light);
 }
 
 .benefitsSection {
+  border-block: 1px solid var(--section-border);
+}
+
+.benefitsSection .eyebrow {
   color: var(--section-fg);
 }
 
-.benefitsIntroduction .eyebrow {
-  color: var(--section-accent);
+.benefitsGrid {
+  gap: var(--space-xl);
 }
 
 .benefitList {
   display: grid;
-  margin-top: var(--space-2xl);
   border-top: 1px solid var(--section-border);
 }
 
 .benefitList article {
   display: grid;
-  gap: var(--space-lg);
-  padding-block: var(--space-xl);
+  gap: var(--space-md);
+  padding-block: var(--space-lg);
   border-bottom: 1px solid var(--section-border);
 }
 
 .benefitValue {
+  color: var(--section-accent);
   font-family: var(--font-family-heading);
-  font-size: clamp(3rem, 10vw, 5rem);
+  font-size: clamp(2rem, 3vw, 3rem);
   font-weight: var(--font-weight-bold);
-  letter-spacing: -0.06em;
-  line-height: 0.85;
-}
-
-.benefitList article:last-child .benefitValue {
-  font-size: clamp(2.75rem, 6vw, 4.25rem);
-  white-space: nowrap;
+  letter-spacing: -0.045em;
+  line-height: 1;
 }
 
 .benefitList article > div {
   display: grid;
-  gap: var(--space-sm);
-  align-content: start;
+  gap: var(--space-xs);
 }
 
 .benefitList h3 {
-  font-size: var(--font-size-feature-title);
+  color: var(--section-fg);
+  font-size: var(--font-size-xl);
 }
 
 .benefitList article > div > p {
-  max-width: 39rem;
-  font-size: var(--font-size-lg);
+  color: var(--section-muted);
 }
 
 .eligibleLabel {
   margin-top: var(--space-xs);
-  font-size: var(--font-size-sm) !important;
+  color: var(--section-fg) !important;
+  font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .eligibleGroups {
-  margin: 0;
-  color: var(--section-muted);
-  font-size: var(--font-size-base) !important;
+  font-size: var(--font-size-sm);
 }
 
-.faqGrid {
-  display: grid;
-  gap: var(--space-2xl);
-}
-
-.faqIntroduction {
-  align-self: start;
-}
-
-.faqList {
-  border-top: 1px solid var(--color-border-dark);
-}
-
-.faqList details {
-  border-bottom: 1px solid var(--color-border-dark);
-}
-
-.faqList summary {
-  position: relative;
-  display: flex;
-  min-height: 4.5rem;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-md);
-  padding-block: var(--space-md);
-  padding-right: var(--space-xl);
-  font-family: var(--font-family-heading);
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-snug);
-  cursor: pointer;
-  list-style: none;
-}
-
-.faqList summary::-webkit-details-marker {
-  display: none;
-}
-
-.faqList summary::after {
-  position: absolute;
-  right: 0;
-  color: var(--color-brand-on-light);
-  font-family: var(--font-family-body);
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-regular);
-  content: "+";
-  transition: transform var(--duration-fast) var(--ease-standard);
-}
-
-.faqList details[open] summary::after {
-  transform: rotate(45deg);
-}
-
-.faqList details > p {
-  max-width: 43rem;
-  padding: 0 var(--space-xl) var(--space-md) 0;
-  color: var(--color-text-muted);
-}
-
-.finalCta {
-  padding-block: var(--space-2xl);
+.faqSection {
   background: var(--color-background);
 }
 
-.finalCtaInner {
-  display: grid;
+.faqGrid {
   gap: var(--space-xl);
-  align-items: center;
 }
 
-.finalCtaInner > div:first-child {
-  display: grid;
-  gap: var(--space-sm);
+.faqList {
+  border-top: 1px solid var(--color-border);
 }
 
-.finalCta h2 {
-  max-width: 17ch;
-  font-size: var(--font-size-section-title);
-  letter-spacing: -0.04em;
+.faqList details {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faqList summary {
+  min-height: 3.75rem;
+  padding-block: var(--space-sm);
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+}
+
+.faqList summary::marker {
+  color: var(--color-brand);
+}
+
+.faqList details p {
+  max-width: 42rem;
+  padding: 0 0 var(--space-md);
+  color: var(--color-text-muted);
+}
+
+.faqList a {
+  color: var(--color-brand);
+  font-weight: var(--font-weight-semibold);
+  text-underline-offset: 0.2em;
 }
 
 .visuallyHidden {
@@ -500,73 +356,52 @@
 }
 
 @media (min-width: 48rem) {
-  .informationItem {
-    grid-template-columns: minmax(9rem, 0.65fr) minmax(0, 1.35fr);
-    gap: var(--space-xl);
+  .heroGrid {
+    grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
+    gap: clamp(var(--space-xl), 7vw, 6rem);
   }
 
-  .faqGrid,
-  .finalCtaInner {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .informationGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .faqGrid {
-    gap: clamp(var(--space-2xl), 8vw, 8rem);
+  .informationGrid article {
+    padding-inline: var(--space-lg);
+    border-right: 1px solid var(--color-border-light);
+    border-bottom: 0;
   }
 
-  .contactOptions {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .contactOptions article {
-    padding-inline: var(--space-xl);
-    border-right: 1px solid var(--color-border-dark);
-  }
-
-  .contactOptions article:first-child {
+  .informationGrid article:first-child {
     padding-left: 0;
   }
 
-  .contactOptions article:last-child {
+  .informationGrid article:last-child {
     padding-right: 0;
     border-right: 0;
   }
 
+  .benefitsGrid,
+  .faqGrid {
+    grid-template-columns: minmax(15rem, 0.65fr) minmax(0, 1.35fr);
+    gap: clamp(var(--space-xl), 7vw, 6rem);
+    align-items: start;
+  }
+
+}
+
+@media (min-width: 64rem) {
   .benefitList article {
-    grid-template-columns: minmax(12rem, 0.7fr) minmax(0, 1.3fr);
-    gap: var(--space-2xl);
+    grid-template-columns: minmax(11rem, 0.38fr) minmax(0, 1fr);
   }
 
   .faqIntroduction {
     position: sticky;
     top: 7rem;
   }
-
-  .finalCtaInner > .actions {
-    justify-content: flex-end;
-  }
-}
-
-@media (min-width: 64rem) {
-  .heroGrid {
-    grid-template-columns: minmax(0, 1.3fr) minmax(20rem, 0.7fr);
-    gap: clamp(var(--space-2xl), 8vw, 8rem);
-  }
-
-  .schedulePanel {
-    min-height: 27rem;
-    padding: var(--space-xl);
-  }
-
-  .informationList {
-    margin-left: min(16vw, 12rem);
-  }
-
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .button,
-  .faqList summary::after {
+  .button {
     transition: none;
   }
 }

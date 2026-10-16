@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   beverageCategories,
   dessertCategories,
@@ -28,18 +29,30 @@ export default function MenuPage() {
   return (
     <main className={styles.main}>
       <header className={styles.intro} aria-labelledby="menu-title">
-        <div className={styles.container}>
-          <p className={styles.eyebrow}>Almoço no Paladar</p>
-          <h1 id="menu-title" className={styles.title}>
-            Cardápio
-          </h1>
-          <p className={styles.lead}>
-            Consulte nossas opções de bebidas e a seleção de sobremesas para
-            acompanhar seu almoço.
-          </p>
-          <p className={styles.availabilityNotice}>
-            A disponibilidade de itens e sabores pode variar ao longo do dia.
-          </p>
+        <div className={`${styles.container} ${styles.introGrid}`}>
+          <div className={styles.introContent}>
+            <p className={styles.eyebrow}>Almoço no Paladar</p>
+            <h1 id="menu-title" className={styles.title}>
+              Cardápio
+            </h1>
+            <p className={styles.lead}>
+              Bebidas e sobremesas para acompanhar o seu almoço.
+            </p>
+            <p className={styles.availabilityNotice}>
+              A disponibilidade de itens e sabores pode variar ao longo do dia.
+            </p>
+          </div>
+
+          <figure className={styles.menuFeature}>
+            <Image
+              src="/images/site/paladar-menu-drinks.webp"
+              alt="Seleção de sucos, água, refrigerante e cerveja no Paladar"
+              width={1672}
+              height={941}
+              priority
+              sizes="(min-width: 768px) 48vw, 100vw"
+            />
+          </figure>
         </div>
       </header>
 
@@ -70,6 +83,7 @@ export default function MenuPage() {
               Para acompanhar
             </p>
             <h2 id="beverages-title">Bebidas</h2>
+            <p>Escolha a categoria e localize rapidamente cada valor.</p>
           </div>
 
           <div className={styles.categories}>
