@@ -1,4 +1,4 @@
-export type ContentStatus = "confirmed" | "provisional";
+export type ContentStatus = "confirmed";
 export type CurrencyCode = "BRL";
 
 export type Money = {
@@ -15,6 +15,7 @@ type DeliveryArea = {
 type LunchboxOption = {
   id: string;
   name: string;
+  description: string;
   composition: readonly string[];
   price: Money;
 };
@@ -34,10 +35,10 @@ export const restaurantContent = {
   ],
   delivery: {
     hours: {
-      opensAt: "11:30",
-      closesAt: "14:00",
-      opensAtLabel: "11h30",
-      closesAtLabel: "14h",
+      opensAt: "11:00",
+      closesAt: "15:00",
+      opensAtLabel: "11h",
+      closesAtLabel: "15h",
     },
     areas: [
       {
@@ -45,7 +46,7 @@ export const restaurantContent = {
         fee: {
           amountInCents: 500,
           currency: "BRL",
-          status: "provisional",
+          status: "confirmed",
         },
       },
       {
@@ -53,7 +54,7 @@ export const restaurantContent = {
         fee: {
           amountInCents: 1000,
           currency: "BRL",
-          status: "provisional",
+          status: "confirmed",
         },
       },
     ] satisfies readonly DeliveryArea[],
@@ -83,73 +84,75 @@ export const restaurantContent = {
     },
   },
   lunchboxes: {
-    status: {
-      names: "provisional",
-      compositions: "provisional",
-      prices: "provisional",
-    },
     options: [
       {
-        id: "light",
-        name: "Light",
+        id: "fit",
+        name: "Fit",
+        description: "Para quem busca uma refeição mais leve e equilibrada.",
         composition: [
-          "arroz",
-          "feijão",
-          "frango grelhado",
-          "legumes",
-          "salada",
+          "Filé de peito de frango",
+          "Pequena porção de arroz",
+          "3 acompanhamentos fit",
+          "Legumes e saladas",
+          "Salada servida à parte",
         ],
         price: {
-          amountInCents: 3000,
+          amountInCents: 3200,
           currency: "BRL",
-          status: "provisional",
+          status: "confirmed",
         },
       },
       {
-        id: "tradicional",
-        name: "Tradicional",
+        id: "marmita-do-dia",
+        name: "Marmita do Dia",
+        description: "A opção completa e saborosa para o almoço do dia a dia.",
         composition: [
-          "arroz",
-          "feijão",
-          "farofa",
-          "acompanhamento",
-          "uma proteína selecionada",
+          "Proteína do dia",
+          "Arroz",
+          "Feijão",
+          "2 acompanhamentos",
+          "Salada servida à parte",
         ],
         price: {
           amountInCents: 3500,
           currency: "BRL",
-          status: "provisional",
+          status: "confirmed",
         },
       },
       {
-        id: "carnes-nobres",
-        name: "Carnes Nobres",
+        id: "churrasco",
+        name: "Churrasco",
+        description:
+          "Para quem não abre mão daquele sabor de churrasco no almoço.",
         composition: [
-          "arroz",
-          "feijão",
-          "acompanhamento",
-          "uma opção de carne nobre",
+          "Proteína de churrasco",
+          "Arroz",
+          "Feijão",
+          "2 acompanhamentos",
+          "Salada servida à parte",
         ],
         price: {
-          amountInCents: 4500,
+          amountInCents: 4200,
           currency: "BRL",
-          status: "provisional",
+          status: "confirmed",
         },
       },
       {
-        id: "vegana",
-        name: "Vegana",
+        id: "churrasco-premium",
+        name: "Churrasco Premium",
+        description:
+          "Uma experiência mais especial, com cortes premium de churrasco.",
         composition: [
-          "arroz",
-          "feijão",
-          "legumes",
-          "salada",
-          "sem ingredientes de origem animal",
+          "Proteína premium",
+          "Arroz",
+          "Feijão",
+          "2 acompanhamentos",
+          "Salada servida à parte",
         ],
         price: {
-          amountInCents: 3000,
+          amountInCents: 5200,
           currency: "BRL",
-          status: "provisional",
+          status: "confirmed",
         },
       },
     ] satisfies readonly LunchboxOption[],
@@ -162,7 +165,7 @@ export const restaurantContent = {
     },
     familyBusiness: true,
     founders: [
-      "Mauri Alves da Cunha",
+      "Maury Alves de Cunha",
       "Marcilon Silva Cunha",
       "Mauri Anderson Silva Cunha",
     ],

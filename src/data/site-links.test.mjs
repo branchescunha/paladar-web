@@ -6,15 +6,15 @@ const expectedMessages = {
   general:
     "Olá! Vim pelo site do Paladar e gostaria de mais informações.",
   lunchboxes:
-    "Olá! Vim pelo site do Paladar e gostaria de fazer um pedido de marmita.",
-  light:
-    "Olá! Vim pelo site do Paladar e gostaria de pedir a Marmita Light.",
-  traditional:
-    "Olá! Vim pelo site do Paladar e gostaria de pedir a Marmita Tradicional.",
-  premiumMeats:
-    "Olá! Vim pelo site do Paladar e gostaria de pedir a Marmita Carnes Nobres.",
-  vegan:
-    "Olá! Vim pelo site do Paladar e gostaria de pedir a Marmita Vegana.",
+    "Olá! Vi as marmitas no site do Paladar e gostaria de fazer um pedido.",
+  fit:
+    "Olá! Vi pelo site do Paladar e gostaria de pedir a marmita Fit de R$ 32,00.",
+  daily:
+    "Olá! Vi pelo site do Paladar e gostaria de pedir a Marmita do Dia de R$ 35,00.",
+  barbecue:
+    "Olá! Vi pelo site do Paladar e gostaria de pedir a marmita Churrasco de R$ 42,00.",
+  premiumBarbecue:
+    "Olá! Vi pelo site do Paladar e gostaria de pedir a marmita Churrasco Premium de R$ 52,00.",
 };
 
 function assertWhatsAppLink(href, number, message) {
@@ -43,24 +43,24 @@ test("centralizes the generic lunchbox destination and exact message", () => {
 
 test("centralizes every individual lunchbox message", () => {
   assertWhatsAppLink(
-    siteLinks.whatsApp.lunchboxes.options.light,
+    siteLinks.whatsApp.lunchboxes.options.fit,
     "5561984901611",
-    expectedMessages.light,
+    expectedMessages.fit,
   );
   assertWhatsAppLink(
-    siteLinks.whatsApp.lunchboxes.options.tradicional,
+    siteLinks.whatsApp.lunchboxes.options["marmita-do-dia"],
     "5561984901611",
-    expectedMessages.traditional,
+    expectedMessages.daily,
   );
   assertWhatsAppLink(
-    siteLinks.whatsApp.lunchboxes.options["carnes-nobres"],
+    siteLinks.whatsApp.lunchboxes.options.churrasco,
     "5561984901611",
-    expectedMessages.premiumMeats,
+    expectedMessages.barbecue,
   );
   assertWhatsAppLink(
-    siteLinks.whatsApp.lunchboxes.options.vegana,
+    siteLinks.whatsApp.lunchboxes.options["churrasco-premium"],
     "5561984901611",
-    expectedMessages.vegan,
+    expectedMessages.premiumBarbecue,
   );
 });
 
