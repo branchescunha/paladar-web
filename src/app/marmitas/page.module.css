@@ -232,7 +232,7 @@
 .lunchboxCard {
   display: grid;
   min-height: 100%;
-  grid-template-rows: auto auto 1fr auto;
+  grid-template-rows: auto auto auto 1fr auto;
   gap: var(--space-sm);
   padding: var(--space-md);
   border: 1px solid var(--section-border);
@@ -269,12 +269,21 @@
   font-size: var(--font-size-feature-title);
 }
 
+.description,
 .composition {
   color: var(--section-muted);
 }
 
-.composition::first-letter {
-  text-transform: uppercase;
+.description {
+  font-size: var(--font-size-sm);
+}
+
+.composition {
+  display: grid;
+  gap: var(--space-3xs);
+  margin: 0;
+  padding-left: var(--space-sm);
+  font-size: var(--font-size-sm);
 }
 
 .cardFooter {

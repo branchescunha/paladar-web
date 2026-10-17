@@ -151,9 +151,12 @@ export default function LunchboxesPage() {
                     <p>Marmita da Casa</p>
                   </div>
                   <h3>{lunchbox.name}</h3>
-                  <p className={styles.composition}>
-                    {lunchbox.composition.join(", ")}.
-                  </p>
+                  <p className={styles.description}>{lunchbox.description}</p>
+                  <ul className={styles.composition}>
+                    {lunchbox.composition.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                   <div className={styles.cardFooter}>
                     <p>
                       <span>Preço</span>

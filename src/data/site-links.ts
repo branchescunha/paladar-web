@@ -9,16 +9,16 @@ export const whatsAppMessages = {
   general: "Olá! Vim pelo site do Paladar e gostaria de mais informações.",
   lunchboxes: {
     general:
-      "Olá! Vim pelo site do Paladar e gostaria de fazer um pedido de marmita.",
+      "Olá! Vi as marmitas no site do Paladar e gostaria de fazer um pedido.",
     options: {
-      light:
-        "Olá! Vim pelo site do Paladar e gostaria de pedir a Marmita Light.",
-      tradicional:
-        "Olá! Vim pelo site do Paladar e gostaria de pedir a Marmita Tradicional.",
-      "carnes-nobres":
-        "Olá! Vim pelo site do Paladar e gostaria de pedir a Marmita Carnes Nobres.",
-      vegana:
-        "Olá! Vim pelo site do Paladar e gostaria de pedir a Marmita Vegana.",
+      fit:
+        "Olá! Vi pelo site do Paladar e gostaria de pedir a marmita Fit de R$ 32,00.",
+      "marmita-do-dia":
+        "Olá! Vi pelo site do Paladar e gostaria de pedir a Marmita do Dia de R$ 35,00.",
+      churrasco:
+        "Olá! Vi pelo site do Paladar e gostaria de pedir a marmita Churrasco de R$ 42,00.",
+      "churrasco-premium":
+        "Olá! Vi pelo site do Paladar e gostaria de pedir a marmita Churrasco Premium de R$ 52,00.",
     },
   },
 } as const;
@@ -41,21 +41,21 @@ export const siteLinks = {
         whatsAppMessages.lunchboxes.general,
       ),
       options: {
-        light: buildWhatsAppUrl(
+        fit: buildWhatsAppUrl(
           whatsAppNumbers.lunchboxes,
-          whatsAppMessages.lunchboxes.options.light,
+          whatsAppMessages.lunchboxes.options.fit,
         ),
-        tradicional: buildWhatsAppUrl(
+        "marmita-do-dia": buildWhatsAppUrl(
           whatsAppNumbers.lunchboxes,
-          whatsAppMessages.lunchboxes.options.tradicional,
+          whatsAppMessages.lunchboxes.options["marmita-do-dia"],
         ),
-        "carnes-nobres": buildWhatsAppUrl(
+        churrasco: buildWhatsAppUrl(
           whatsAppNumbers.lunchboxes,
-          whatsAppMessages.lunchboxes.options["carnes-nobres"],
+          whatsAppMessages.lunchboxes.options.churrasco,
         ),
-        vegana: buildWhatsAppUrl(
+        "churrasco-premium": buildWhatsAppUrl(
           whatsAppNumbers.lunchboxes,
-          whatsAppMessages.lunchboxes.options.vegana,
+          whatsAppMessages.lunchboxes.options["churrasco-premium"],
         ),
       },
     },
