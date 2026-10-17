@@ -275,7 +275,7 @@
   }
 
   .menuItem {
-    grid-template-columns: minmax(0, 1fr) minmax(8rem, 0.65fr) auto;
+    grid-template-columns: minmax(0, 1fr) minmax(8rem, 0.65fr) 5.5rem;
     gap: var(--space-lg);
     align-items: baseline;
   }
@@ -291,6 +291,7 @@
 
   .optionList dd {
     grid-column: 3;
+    text-align: right;
   }
 
   .dessertList {
