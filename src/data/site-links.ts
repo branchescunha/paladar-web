@@ -6,19 +6,19 @@ const whatsAppNumbers = {
 } as const;
 
 export const whatsAppMessages = {
-  general: "Olá! Vim pelo site do Paladar e gostaria de mais informações.",
+  general: "Olá! Vi o site do Paladar e gostaria de mais informações.",
   lunchboxes: {
     general:
       "Olá! Vi as marmitas no site do Paladar e gostaria de fazer um pedido.",
     options: {
       fit:
-        "Olá! Vi pelo site do Paladar e gostaria de pedir a marmita Fit de R$ 32,00.",
+        "Olá! Vi a marmita Fit no site do Paladar e gostaria de pedir uma por R$ 32,00.",
       "marmita-do-dia":
-        "Olá! Vi pelo site do Paladar e gostaria de pedir a Marmita do Dia de R$ 35,00.",
+        "Olá! Vi a Marmita do Dia no site do Paladar e gostaria de pedir uma por R$ 35,00.",
       churrasco:
-        "Olá! Vi pelo site do Paladar e gostaria de pedir a marmita Churrasco de R$ 42,00.",
+        "Olá! Vi a marmita Churrasco no site do Paladar e gostaria de pedir uma por R$ 42,00.",
       "churrasco-premium":
-        "Olá! Vi pelo site do Paladar e gostaria de pedir a marmita Churrasco Premium de R$ 52,00.",
+        "Olá! Vi a marmita Churrasco Premium no site do Paladar e gostaria de pedir uma por R$ 52,00.",
     },
   },
 } as const;

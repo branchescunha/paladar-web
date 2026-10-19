@@ -173,16 +173,27 @@
 
 .servicesGrid {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: clamp(var(--space-lg), 4vw, var(--space-xl));
   border-top: 1px solid var(--color-border-light);
 }
 
 .serviceItem {
   display: grid;
+  min-width: 0;
   gap: var(--space-sm);
   align-content: start;
-  padding-block: var(--space-md);
+  padding: var(--space-md) var(--space-sm);
   border-bottom: 1px solid var(--color-border-light);
+}
+
+.serviceItem:first-child {
+  padding-left: 0;
+  border-right: 1px solid var(--color-border-light);
+}
+
+.serviceItem:last-child {
+  padding-right: 0;
 }
 
 .serviceItem h3 {
@@ -234,6 +245,20 @@
   font-style: normal;
 }
 
+@media (max-width: 22rem) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceItem {
+    padding-inline: 0;
+  }
+
+  .serviceItem:first-child {
+    border-right: 0;
+  }
+}
+
 @media (min-width: 48rem) {
   .featureGrid,
   .locationGrid {
@@ -252,10 +277,6 @@
   .featureGridReverse .editorialContent {
     grid-column: 1;
     grid-row: 1;
-  }
-
-  .servicesGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .serviceItem {

@@ -110,7 +110,6 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
               >
                 Abrir no Google Maps
-                <span aria-hidden="true">↗</span>
                 <span className={styles.visuallyHidden}>
                   {" "}(abre em nova aba)
                 </span>

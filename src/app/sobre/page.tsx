@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import Link from "next/link";
+import tablesDesktop from "../../../assets/hero-references/desktop/tables.jpg";
+import tablesMobile from "../../../assets/hero-references/mobile/tables.jpg";
 import { restaurantContent } from "@/data/restaurant";
 import { siteContent, siteRoutes } from "@/data/site";
 import styles from "./page.module.css";
@@ -15,6 +17,32 @@ const listFormatter = new Intl.ListFormat("pt-BR", {
   style: "long",
   type: "conjunction",
 });
+
+function TablesGalleryImage() {
+  const common = {
+    alt: "Mesas e salão atual do Restaurante Paladar",
+    sizes: "(min-width: 768px) 32vw, 40vw",
+  };
+  const {
+    props: { srcSet: desktopSrcSet },
+  } = getImageProps({
+    ...common,
+    src: tablesDesktop,
+  });
+  const {
+    props: { srcSet: mobileSrcSet, alt, ...imageProps },
+  } = getImageProps({
+    ...common,
+    src: tablesMobile,
+  });
+
+  return (
+    <picture>
+      <source media="(min-width: 48rem)" srcSet={desktopSrcSet} />
+      <img {...imageProps} srcSet={mobileSrcSet} alt={alt} />
+    </picture>
+  );
+}
 
 export default function AboutPage() {
   const { history } = restaurantContent;
@@ -87,8 +115,8 @@ export default function AboutPage() {
               O espaço onde essa história continua.
             </h2>
             <p>
-              Registros atuais da fachada, da entrada e do salão do restaurante
-              no Setor O.
+              Registros atuais da fachada e dos ambientes internos do
+              restaurante no Setor O.
             </p>
           </div>
 
@@ -103,13 +131,7 @@ export default function AboutPage() {
               />
             </figure>
             <figure>
-              <Image
-                src="/images/site/restaurant-entrance.webp"
-                alt="Entrada atual do Restaurante Paladar"
-                width={1280}
-                height={720}
-                sizes="(min-width: 768px) 32vw, 100vw"
-              />
+              <TablesGalleryImage />
             </figure>
             <figure>
               <Image

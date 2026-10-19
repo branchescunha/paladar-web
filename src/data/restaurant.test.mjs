@@ -102,7 +102,7 @@ test("exposes the four confirmed lunchboxes with complete content", () => {
 
 test("keeps the two historical Maury and Mauri names distinct", () => {
   assert.deepEqual(restaurantContent.history.founders, [
-    "Maury Alves de Cunha",
+    "Maury Alves da Cunha",
     "Marcilon Silva Cunha",
     "Mauri Anderson Silva Cunha",
   ]);
