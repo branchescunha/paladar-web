@@ -1,0 +1,61 @@
+.main {
+  display: grid;
+  min-height: clamp(32rem, 72svh, 48rem);
+  place-items: center;
+  padding: var(--section-block-space) var(--container-gutter);
+  color: var(--color-text);
+  background: var(--color-background);
+}
+
+.content {
+  display: grid;
+  gap: var(--space-md);
+  width: min(100%, 42rem);
+  justify-items: start;
+}
+
+.eyebrow {
+  color: var(--color-brand);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.content h1 {
+  max-width: 12ch;
+  font-size: var(--font-size-page-title);
+  letter-spacing: -0.05em;
+}
+
+.content > p:not(.eyebrow) {
+  max-width: 34rem;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+}
+
+.button {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-pill);
+  color: var(--color-text-inverse);
+  background: var(--color-brand);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.button:hover {
+  color: var(--color-text-inverse);
+  background: var(--color-brand-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}

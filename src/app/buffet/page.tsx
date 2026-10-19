@@ -36,7 +36,6 @@ export default function BuffetPage() {
               rel="noopener noreferrer"
             >
               Conhecer o Paladar Buffet
-              <span aria-hidden="true">↗</span>
               <span className={styles.visuallyHidden}>
                 {" "}(abre o site oficial em nova aba)
               </span>
@@ -81,7 +80,7 @@ export default function BuffetPage() {
               sizes="(min-width: 768px) 64vw, 100vw"
             />
             <span>
-              Visitar site oficial <span aria-hidden="true">↗</span>
+              Visitar site oficial
             </span>
           </a>
         </div>

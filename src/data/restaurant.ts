@@ -165,7 +165,7 @@ export const restaurantContent = {
     },
     familyBusiness: true,
     founders: [
-      "Maury Alves de Cunha",
+      "Maury Alves da Cunha",
       "Marcilon Silva Cunha",
       "Mauri Anderson Silva Cunha",
     ],

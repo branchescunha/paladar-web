@@ -4,17 +4,17 @@ import { siteLinks } from "./site-links.ts";
 
 const expectedMessages = {
   general:
-    "Olá! Vim pelo site do Paladar e gostaria de mais informações.",
+    "Olá! Vi o site do Paladar e gostaria de mais informações.",
   lunchboxes:
     "Olá! Vi as marmitas no site do Paladar e gostaria de fazer um pedido.",
   fit:
-    "Olá! Vi pelo site do Paladar e gostaria de pedir a marmita Fit de R$ 32,00.",
+    "Olá! Vi a marmita Fit no site do Paladar e gostaria de pedir uma por R$ 32,00.",
   daily:
-    "Olá! Vi pelo site do Paladar e gostaria de pedir a Marmita do Dia de R$ 35,00.",
+    "Olá! Vi a Marmita do Dia no site do Paladar e gostaria de pedir uma por R$ 35,00.",
   barbecue:
-    "Olá! Vi pelo site do Paladar e gostaria de pedir a marmita Churrasco de R$ 42,00.",
+    "Olá! Vi a marmita Churrasco no site do Paladar e gostaria de pedir uma por R$ 42,00.",
   premiumBarbecue:
-    "Olá! Vi pelo site do Paladar e gostaria de pedir a marmita Churrasco Premium de R$ 52,00.",
+    "Olá! Vi a marmita Churrasco Premium no site do Paladar e gostaria de pedir uma por R$ 52,00.",
 };
 
 function assertWhatsAppLink(href, number, message) {

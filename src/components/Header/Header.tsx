@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { type MouseEvent, useEffect, useRef, useState } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
 import {
   homeStartHref,
@@ -47,6 +47,31 @@ export function Header() {
     setIsMenuOpen(false);
   }
 
+  function handleBrandClick(event: MouseEvent<HTMLAnchorElement>) {
+    closeMenu();
+
+    const isModifiedClick =
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey;
+
+    if (pathname !== siteRoutes.home || isModifiedClick) {
+      return;
+    }
+
+    const homeStart = document.getElementById("inicio");
+
+    if (!homeStart) {
+      return;
+    }
+
+    event.preventDefault();
+    window.history.replaceState(window.history.state, "", homeStartHref);
+    homeStart.scrollIntoView({ block: "start" });
+  }
+
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
@@ -54,7 +79,7 @@ export function Header() {
           className={styles.brandLink}
           href={homeStartHref}
           aria-label={`${siteContent.brand.primaryName} — início da página`}
-          onClick={closeMenu}
+          onClick={handleBrandClick}
         >
           <Image
             className={styles.logo}
