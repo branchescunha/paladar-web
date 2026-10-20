@@ -1,14 +1,19 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { seoConfig } from "@/data/seo";
 import { siteContent, siteRoutes } from "@/data/site";
+import { createPageMetadata } from "@/lib/seo";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "Paladar Buffet | Festas e eventos",
-  description:
-    "Conheça o Paladar Buffet, serviço do ecossistema Paladar dedicado a festas, celebrações e eventos.",
-};
+export const metadata = createPageMetadata(
+  {
+    title: "Paladar Buffet: festas e eventos",
+    description:
+      "Conheça o Paladar Buffet, serviço do ecossistema Paladar dedicado a festas, celebrações e eventos.",
+    path: "/buffet",
+  },
+  seoConfig,
+);
 
 export default function BuffetPage() {
   const { buffet } = siteContent.externalLinks;

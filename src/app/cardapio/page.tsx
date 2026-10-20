@@ -1,16 +1,22 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import {
   beverageCategories,
   dessertCategories,
   type MenuPriceOption,
 } from "@/data/menu";
+import { seoConfig } from "@/data/seo";
+import { createPageMetadata } from "@/lib/seo";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "Cardápio | Paladar",
-  description: "Consulte as bebidas e sobremesas disponíveis no Paladar.",
-};
+export const metadata = createPageMetadata(
+  {
+    title: "Cardápio de bebidas e sobremesas em Ceilândia",
+    description:
+      "Consulte bebidas, sucos, refrigerantes, cervejas e sobremesas disponíveis no Restaurante Paladar em Ceilândia.",
+    path: "/cardapio",
+  },
+  seoConfig,
+);
 
 const currencyFormatter = new Intl.NumberFormat("pt-BR", {
   style: "currency",

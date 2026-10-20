@@ -2,8 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { Hero } from "@/components/Hero/Hero";
 import { restaurantContent } from "@/data/restaurant";
+import { seoConfig } from "@/data/seo";
 import { siteContent, siteRoutes } from "@/data/site";
+import { createPageMetadata } from "@/lib/seo";
 import styles from "./page.module.css";
+
+export const metadata = createPageMetadata(
+  {
+    title: "Restaurante Paladar | Almoço em Ceilândia",
+    description:
+      "Restaurante Paladar em Ceilândia, com self-service, churrasco e almoço todos os dias no Setor O.",
+    path: "/",
+    absoluteTitle: true,
+  },
+  seoConfig,
+);
 
 const [selfService] = restaurantContent.service.formats;
 const [

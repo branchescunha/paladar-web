@@ -1,15 +1,20 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { restaurantContent } from "@/data/restaurant";
+import { seoConfig } from "@/data/seo";
 import { siteLinks } from "@/data/site-links";
 import { siteContent, siteRoutes } from "@/data/site";
+import { createPageMetadata } from "@/lib/seo";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "Contato e localização | Paladar",
-  description:
-    "Consulte o endereço, horários, contatos e informações de funcionamento do Restaurante Paladar em Ceilândia.",
-};
+export const metadata = createPageMetadata(
+  {
+    title: "Contato e localização em Ceilândia",
+    description:
+      "Consulte o endereço, horários, contatos e informações de funcionamento do Restaurante Paladar em Ceilândia.",
+    path: "/contato",
+  },
+  seoConfig,
+);
 
 const currencyFormatter = new Intl.NumberFormat("pt-BR", {
   style: "currency",
