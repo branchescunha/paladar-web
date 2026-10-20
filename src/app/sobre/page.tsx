@@ -1,18 +1,23 @@
-import type { Metadata } from "next";
 import Image, { getImageProps } from "next/image";
 import Link from "next/link";
 import facadeMobile from "../../../assets/hero-references/mobile/facade.jpg";
 import tablesDesktop from "../../../assets/hero-references/desktop/tables.jpg";
 import tablesMobile from "../../../assets/hero-references/mobile/tables.jpg";
 import { restaurantContent } from "@/data/restaurant";
+import { seoConfig } from "@/data/seo";
 import { siteContent, siteRoutes } from "@/data/site";
+import { createPageMetadata } from "@/lib/seo";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "Nossa história | Paladar",
-  description:
-    "Conheça a história do Paladar, restaurante familiar presente em Ceilândia desde 1998.",
-};
+export const metadata = createPageMetadata(
+  {
+    title: "Nossa história",
+    description:
+      "Conheça a história do Paladar, restaurante familiar presente em Ceilândia desde 1998.",
+    path: "/sobre",
+  },
+  seoConfig,
+);
 
 const listFormatter = new Intl.ListFormat("pt-BR", {
   style: "long",

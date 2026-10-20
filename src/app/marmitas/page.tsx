@@ -1,15 +1,20 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { restaurantContent, type Money } from "@/data/restaurant";
+import { seoConfig } from "@/data/seo";
 import { siteLinks } from "@/data/site-links";
 import { siteContent, siteRoutes } from "@/data/site";
+import { createPageMetadata } from "@/lib/seo";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "Marmitas e delivery | Paladar",
-  description:
-    "Conheça as opções de marmitas do Paladar e consulte horário e taxas de delivery.",
-};
+export const metadata = createPageMetadata(
+  {
+    title: "Marmitas e delivery em Ceilândia",
+    description:
+      "Conheça as marmitas do Restaurante Paladar e consulte horário e taxas de delivery para o Setor O e Ceilândia.",
+    path: "/marmitas",
+  },
+  seoConfig,
+);
 
 const currencyFormatter = new Intl.NumberFormat("pt-BR", {
   style: "currency",

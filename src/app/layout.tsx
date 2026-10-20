@@ -1,12 +1,45 @@
 import type { Metadata, Viewport } from "next";
 import { Footer } from "@/components/Footer/Footer";
 import { Header } from "@/components/Header/Header";
+import { restaurantSeoData, seoConfig } from "@/data/seo";
+import {
+  createRestaurantStructuredData,
+  serializeJsonLd,
+} from "@/lib/seo";
 import { themeInitializationScript } from "@/lib/theme";
 import "./globals.css";
 
+const restaurantStructuredData = createRestaurantStructuredData(
+  restaurantSeoData,
+  seoConfig,
+);
+
 export const metadata: Metadata = {
-  title: "Paladar",
-  description: "Site oficial do restaurante Paladar.",
+  metadataBase: new URL(seoConfig.siteUrl),
+  title: {
+    default: "Restaurante Paladar | Almoço em Ceilândia",
+    template: "%s | Paladar",
+  },
+  description:
+    "Restaurante Paladar em Ceilândia, com self-service, churrasco e almoço todos os dias no Setor O.",
+  applicationName: seoConfig.siteName,
+  openGraph: {
+    type: "website",
+    locale: seoConfig.locale,
+    url: seoConfig.siteUrl,
+    siteName: seoConfig.siteName,
+    title: "Restaurante Paladar | Almoço em Ceilândia",
+    description:
+      "Restaurante Paladar em Ceilândia, com self-service, churrasco e almoço todos os dias no Setor O.",
+    images: [seoConfig.socialImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Restaurante Paladar | Almoço em Ceilândia",
+    description:
+      "Restaurante Paladar em Ceilândia, com self-service, churrasco e almoço todos os dias no Setor O.",
+    images: [seoConfig.socialImage.url],
+  },
   manifest: "/manifest.webmanifest",
   icons: {
     icon: [
@@ -40,6 +73,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(restaurantStructuredData),
+          }}
+        />
       </head>
       <body>
         <Header />
