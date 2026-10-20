@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image, { getImageProps } from "next/image";
 import Link from "next/link";
+import facadeMobile from "../../../assets/hero-references/mobile/facade.jpg";
 import tablesDesktop from "../../../assets/hero-references/desktop/tables.jpg";
 import tablesMobile from "../../../assets/hero-references/mobile/tables.jpg";
 import { restaurantContent } from "@/data/restaurant";
@@ -17,6 +18,34 @@ const listFormatter = new Intl.ListFormat("pt-BR", {
   style: "long",
   type: "conjunction",
 });
+
+function FacadeGalleryImage() {
+  const common = {
+    alt: "Fachada atual do Restaurante Paladar",
+    sizes: "(min-width: 768px) 64vw, 60vw",
+  };
+  const {
+    props: { srcSet: desktopSrcSet },
+  } = getImageProps({
+    ...common,
+    src: "/images/site/restaurant-facade.webp",
+    width: 1440,
+    height: 810,
+  });
+  const {
+    props: { srcSet: mobileSrcSet, alt, ...imageProps },
+  } = getImageProps({
+    ...common,
+    src: facadeMobile,
+  });
+
+  return (
+    <picture>
+      <source media="(min-width: 48rem)" srcSet={desktopSrcSet} />
+      <img {...imageProps} srcSet={mobileSrcSet} alt={alt} />
+    </picture>
+  );
+}
 
 function TablesGalleryImage() {
   const common = {
@@ -122,13 +151,7 @@ export default function AboutPage() {
 
           <div className={styles.galleryGrid}>
             <figure className={styles.galleryPrimary}>
-              <Image
-                src="/images/site/restaurant-facade.webp"
-                alt="Fachada atual do Restaurante Paladar"
-                width={960}
-                height={540}
-                sizes="(min-width: 768px) 64vw, 100vw"
-              />
+              <FacadeGalleryImage />
             </figure>
             <figure>
               <TablesGalleryImage />
