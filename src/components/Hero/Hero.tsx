@@ -204,7 +204,7 @@ export function Hero({ children, labelledBy }: HeroProps) {
           className={styles.video}
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
           aria-hidden="true"
           tabIndex={-1}
         />
